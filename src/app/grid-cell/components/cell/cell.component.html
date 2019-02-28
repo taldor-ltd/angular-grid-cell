@@ -1,0 +1,74 @@
+<div [align]="column.align ? column.align : 'right'" [class]="column.containerClass ? column.containerClass : ''">
+  <span *ngFor='let columnElement of column.elements' [ngSwitch]="columnElement.type">
+    <span *ngSwitchCase="'datetime'" (click)='columnElement.onClick(data);'>
+      <span [ngSwitch]="columnElement.pipe">
+        <span *ngSwitchCase="'amDateFormat'"
+          [ngClass]="columnElement.getNgClass ? (columnElement.getNgClass | cellFunction: data) : {}">
+          {{data[columnElement.field] | amDateFormat:columnElement.format}}
+        </span>
+        <span *ngSwitchCase="'amTimeAgo'"
+          [ngClass]="columnElement.getNgClass ? (columnElement.getNgClass | cellFunction: data) : {}">
+          {{data[columnElement.field] | amTimeAgo}}
+        </span>
+        <span *ngSwitchCase="'amCalendar'"
+          [ngClass]="columnElement.getNgClass ? (columnElement.getNgClass | cellFunction: data) : {}">
+          {{data[columnElement.field] | amCalendar}}
+        </span>
+      </span>
+    </span>
+    <span *ngSwitchCase="'icon'">
+
+      <span [ngSwitch]="columnElement.showIcon ? (columnElement.showIcon | cellFunction: data) : undefined"
+        (click)='columnElement.onClick(data);'>
+        <span *ngSwitchCase="undefined">
+          <span [ngSwitch]="columnElement.field === undefined">
+            <span *ngSwitchCase="true">
+              <i [ngClass]="columnElement.iconClass ? (columnElement.iconClass | cellFunction: data) : {}"
+                [pTooltip]='columnElement.tooltip' tooltipPosition="left"></i>
+            </span>
+            <span *ngSwitchCase="false">
+              <i *ngIf="data[columnElement.field]"
+                [ngClass]="columnElement.iconClass ? (columnElement.iconClass | cellFunction: data) : {}"
+                [pTooltip]='columnElement.tooltip' tooltipPosition="left"></i>
+            </span>
+          </span>
+        </span>
+        <span *ngSwitchCase="true">
+          <i [ngClass]="columnElement.iconClass ? (columnElement.iconClass | cellFunction: data) : {}"
+            [pTooltip]='columnElement.tooltip' tooltipPosition="left"></i>
+        </span>
+      </span>
+    </span>
+    <span *ngSwitchCase="'image'">
+      <span *ngIf="columnElement.showImage ? (columnElement.showImage | cellFunction: data) : true"
+        (click)='columnElement.onClick(data);'>
+        <img [class]="columnElement.class"
+          [src]='columnElement.image ? (columnElement.image | cellFunction: data) : null' alt=""
+          [pTooltip]='columnElement.tooltip' tooltipPosition="left">
+      </span>
+    </span>
+    <span *ngSwitchCase="'text'" [class]="columnElement.class"
+      [ngClass]="columnElement.getNgClass ? (columnElement.getNgClass | cellFunction: data) : {}"
+      [pTooltip]='columnElement.tooltip' tooltipPosition="left" (click)='columnElement.onClick(data);'>
+      <span [ngSwitch]="columnElement.field.constructor.name">
+        <span *ngSwitchCase="'Function'">
+          {{columnElement.field | cellFunction: data}}
+        </span>
+        <span *ngSwitchCase="'String'">
+          <ng-container *ngIf="columnElement.field.indexOf('.') !== -1; else elseTemplate">
+            {{data | cellNestedField: columnElement.field}}
+          </ng-container>
+          <ng-template #elseTemplate>
+            {{data[columnElement.field]}}
+          </ng-template>
+        </span>
+      </span>
+    </span>
+    <span *ngSwitchCase="'button'">
+      <button [class]="columnElement.class" [ngClass]="columnElement.buttonStyle" [pTooltip]='columnElement.tooltip'
+        tooltipPosition="left" (click)='columnElement.onClick(data);'>
+        {{columnElement.buttonText}}
+      </button>
+    </span>
+  </span>
+</div>
