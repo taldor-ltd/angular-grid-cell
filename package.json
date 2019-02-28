@@ -1,5 +1,5 @@
 {
-  "name": "angular-grid-cell",
+  "name": "@taldor-ltd/angular-grid-cell",
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
@@ -51,5 +51,21 @@
     "tsickle": "^0.34.3",
     "tslint": "~5.9.1",
     "typescript": "^3.2.4"
-  }
+  },
+  "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.5.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taldor-ltd/angular-grid-cell.git"
+  },
+  "keywords": [
+    "angular",
+    "grid"
+  ],
+  "author": "Taldor LTD",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/taldor-ltd/angular-grid-cell/issues"
+  },
+  "homepage": "https://github.com/taldor-ltd/angular-grid-cell#readme"
 }
