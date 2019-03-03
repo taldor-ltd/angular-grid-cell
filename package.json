@@ -1,6 +1,17 @@
 {
   "name": "@taldor-ltd/angular-grid-cell",
-  "version": "1.0.0",
+  "version": "1.0.2",
+  "description": "Taldor - angular grid cell component",
+  "main": "./bundles/angular-grid-cell.umd.js",
+  "module": "./fesm5/angular-grid-cell.js",
+  "es2015": "./fesm2015/angular-grid-cell.js",
+  "esm5": "./esm5/angular-grid-cell.js",
+  "esm2015": "./esm2015/angular-grid-cell.js",
+  "fesm5": "./fesm5/angular-grid-cell.js",
+  "fesm2015": "./fesm2015/angular-grid-cell.js",
+  "typings": "./bundles/angular-grid-cell.umd.d.ts",
+  "author": "Taldor LTD",
+  "license": "ISC",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -8,7 +19,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "packagr": "ng-packagr -p ng-package.json"
+    "packagr": "ng-packagr -p ng-package.json",
+    "publish": "npm publish ./dist --access public"
   },
   "private": false,
   "dependencies": {
@@ -50,10 +62,8 @@
     "ts-node": "~5.0.1",
     "tsickle": "^0.34.3",
     "tslint": "~5.9.1",
-    "typescript": "^3.2.4"
+    "typescript": "3.1.6"
   },
-  "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.5.",
-  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/taldor-ltd/angular-grid-cell.git"
@@ -62,8 +72,6 @@
     "angular",
     "grid"
   ],
-  "author": "Taldor LTD",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/taldor-ltd/angular-grid-cell/issues"
   },
