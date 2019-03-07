@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Column } from 'src/app/grid-cell/models/classes/Column';
 import { TextColumnElement } from 'src/app/grid-cell/models/classes/TextColumnElement';
 import { IconColumnElement } from 'src/app/grid-cell/models/classes/IconColumnElement';
+import { ImageColumnElement } from 'src/app/grid-cell/models/classes/ImageColumnElement';
 
 @Component({
   selector: 'tld-array-data-type-test',
@@ -40,6 +41,14 @@ export class ArrayDataTypeTestComponent implements OnInit {
           new IconColumnElement(this.getIconForCarOption)
         ],
         { header: 'Options', field: 'options' }
+      ),
+      new Column(
+        new ImageColumnElement('https://avatars2.githubusercontent.com/u/5260028?s=88&v=4', { width: '100%' }),
+        { header: 'image with width set'}
+      ),
+      new Column(
+        new ImageColumnElement('https://avatars2.githubusercontent.com/u/5260028?s=88&v=4'),
+        { header: 'image without width set'}
       )
     ];
   }

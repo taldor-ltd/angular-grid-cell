@@ -45,7 +45,7 @@
           (click)='columnElement.onClick(rowData);'>
           <img [class]="columnElement.class"
             [src]='columnElement.image ? (columnElement.image | cellFunction: rowData) : null' alt=""
-            [pTooltip]='columnElement.tooltip' tooltipPosition="left">
+            [pTooltip]='columnElement.tooltip' tooltipPosition="left" [style.width]="columnElement.width">
         </span>
       </span>
       <span *ngSwitchCase="'text'" [class]="columnElement.class"

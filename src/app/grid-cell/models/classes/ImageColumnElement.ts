@@ -4,6 +4,7 @@ import { IImageColumnElementOptions } from '../interfaces/IImageColumnElementOpt
 export class ImageColumnElement implements IColumnElement {
   type: string;
   image: string | ((data: any) => string);
+  width: string;
   showImage: (data: {}) => boolean;
 
   constructor(image: string | ((data: any) => string), options?: IImageColumnElementOptions) {
@@ -11,6 +12,9 @@ export class ImageColumnElement implements IColumnElement {
     this.image = image;
     if (options) {
       Object.assign(this, options);
+    }
+    if (!this.width) {
+      this.width = 'unset';
     }
   }
 }
