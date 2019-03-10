@@ -18,4 +18,14 @@ export class ImageColumnElement implements IColumnElement {
       this.width = 'unset';
     }
   }
+
+  private getErrorImage(img: HTMLImageElement): void {
+    if (img) {
+      if (!img.src.includes(this.errorImage)) {
+        img.src = this.errorImage;
+      } else {
+        img.src = 'assets/img/broken-img.png';
+      }
+    }
+  }
 }

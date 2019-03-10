@@ -16,8 +16,8 @@ export class SimpleGridTestComponent implements OnInit {
 
   ngOnInit() {
     this.cars = [
-      { vin: 'dsad231ff', year: 2012, brand: 'VW', color: 'Orange', pic:"/assets/img/good.png" },
-      { vin: 'dsad231ff', year: 2012, brand: 'VW', color: 'Orange', pic:"/assets/img/trying-to-trigger-error.png" }
+      { vin: 'dsad231ff', year: 2012, brand: 'VW', color: 'Orange', pic: '/assets/img/good.png' },
+      { vin: 'dsad231ff', year: 2012, brand: 'VW', color: 'Orange', pic: '/assets/img/trying-to-trigger-error.png' }
     ];
 
     this.cols = [
@@ -25,7 +25,8 @@ export class SimpleGridTestComponent implements OnInit {
       new Column(new TextColumnElement('year'), { header: 'Year' }),
       new Column(new TextColumnElement('brand'), { header: 'Brand' }),
       new Column(new TextColumnElement('color'), { header: 'color' }),
-      new Column(new ImageColumnElement((data)=>data.pic,{ errorImage: "/assets/img/bad.png" }),{header: 'image'})
+      new Column(new ImageColumnElement((data) => data.pic, { errorImage: '/assets/img/bad.png' }), {header: 'image'}),
+      new Column(new ImageColumnElement((data) => data.pic, { errorImage: '/assets/img/bad1.png' }), {header: 'image'})
     ];
   }
 
