@@ -22,6 +22,12 @@
       "type": "npm",
       "script": "start",
       "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "npm link",
+      "command": "cd dist & npm link",
+      "problemMatcher": []
     }
   ]
 }
