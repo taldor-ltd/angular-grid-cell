@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Column } from 'src/app/grid-cell/models/classes/Column';
 import { TextColumnElement } from 'src/app/grid-cell/models/classes/TextColumnElement';
+import { ImageColumnElement } from 'src/app/grid-cell/models/classes/ImageColumnElement';
 
 @Component({
   selector: 'tld-simple-grid-test',
@@ -15,14 +16,16 @@ export class SimpleGridTestComponent implements OnInit {
 
   ngOnInit() {
     this.cars = [
-      { vin: 'dsad231ff', year: 2012, brand: 'VW', color: 'Orange' }
+      { vin: 'dsad231ff', year: 2012, brand: 'VW', color: 'Orange', pic:"/assets/img/good.png" },
+      { vin: 'dsad231ff', year: 2012, brand: 'VW', color: 'Orange', pic:"/assets/img/trying-to-trigger-error.png" }
     ];
 
     this.cols = [
       new Column(new TextColumnElement('vin'), { header: 'Vin' }),
       new Column(new TextColumnElement('year'), { header: 'Year' }),
       new Column(new TextColumnElement('brand'), { header: 'Brand' }),
-      new Column(new TextColumnElement('color'), { header: 'color' })
+      new Column(new TextColumnElement('color'), { header: 'color' }),
+      new Column(new ImageColumnElement((data)=>data.pic,{ errorImage: "/assets/img/bad.png" }),{header: 'image'})
     ];
   }
 

@@ -6,6 +6,7 @@ export class ImageColumnElement implements IColumnElement {
   image: string | ((data: any) => string);
   width: string;
   showImage: (data: {}) => boolean;
+  errorImage: string;
 
   constructor(image: string | ((data: any) => string), options?: IImageColumnElementOptions) {
     this.type = 'image';
