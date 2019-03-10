@@ -7,6 +7,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import { CellComponent } from './components/cell/cell.component';
 import { CellFunctionPipe } from './components/cell/cell-function.pipe';
 import { CellNestedFieldPipe } from './components/cell/cell-nested-field.pipe';
+import { GroupByPipe } from './components/cell/group-by.pipe';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { CellNestedFieldPipe } from './components/cell/cell-nested-field.pipe';
   declarations: [
     CellComponent,
     CellFunctionPipe,
-    CellNestedFieldPipe
+    CellNestedFieldPipe,
+    GroupByPipe
   ]
 })
 export class GridCellModule { }

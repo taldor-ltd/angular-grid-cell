@@ -21,6 +21,11 @@ export class CellComponent implements OnInit {
     } else {
       this.rowDataArray = [this.data];
     }
+
+    if (this.column.groupByField === undefined || this.column.groupByField === null || this.column.groupByField === '') {
+      this.column.groupByField = this.column.field.toString();
+    }
+
   }
 
 }

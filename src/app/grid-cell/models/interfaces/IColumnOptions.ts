@@ -7,4 +7,5 @@ export class IColumnOptions {
   width?: string;
   align?: ColumnAlign;
   containerClass?: string;
+  groupByField?: string;
 }
