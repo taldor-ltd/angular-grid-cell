@@ -6,6 +6,7 @@ export class ImageColumnElement implements IColumnElement {
   image: string | ((data: any) => string);
   width: string;
   showImage: (data: {}) => boolean;
+  errorImage: string;
 
   constructor(image: string | ((data: any) => string), options?: IImageColumnElementOptions) {
     this.type = 'image';
@@ -15,6 +16,16 @@ export class ImageColumnElement implements IColumnElement {
     }
     if (!this.width) {
       this.width = 'unset';
+    }
+  }
+
+  private getErrorImage(img: HTMLImageElement): void {
+    if (img) {
+      if (!img.src.includes(this.errorImage)) {
+        img.src = this.errorImage;
+      } else {
+        img.src = 'assets/img/broken-img.png';
+      }
     }
   }
 }
