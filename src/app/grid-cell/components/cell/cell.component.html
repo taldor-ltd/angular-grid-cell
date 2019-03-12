@@ -42,10 +42,10 @@
           </span>
         </span>
         <span *ngSwitchCase="'image'">
-          <span *ngIf="columnElement.showImage ? (columnElement.showImage | cellFunction: data) : true"
+          <span *ngIf="columnElement.showImage ? (columnElement.showImage | cellFunction: data) : true" 
             (click)='columnElement.onClick(data);'>
-            <img [class]="columnElement.class"
-              [src]='columnElement.image ? (columnElement.image | cellFunction: data) : null' alt=""
+            <img #img [class]="columnElement.class"
+              [src]='columnElement.image ? (columnElement.image | cellFunction: data) : null' alt="" (error)="columnElement.getErrorImage(img)"
               [pTooltip]='columnElement.tooltip' tooltipPosition="left" [style.width]="columnElement.width">
           </span>
         </span>
