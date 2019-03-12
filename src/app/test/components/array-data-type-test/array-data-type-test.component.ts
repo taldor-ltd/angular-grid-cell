@@ -62,10 +62,17 @@ export class ArrayDataTypeTestComponent implements OnInit {
       new Column(new TextColumnElement('color'), { header: 'Color' }),
       new Column(
         [
-          new TextColumnElement('desc'),
-          new IconColumnElement(this.getIconForCarOption)
+          new TextColumnElement(this.getDescForCarOption.bind(this)),
+          new IconColumnElement(this.getIconForCarOptionGroupBy.bind(this))
         ],
-        { header: 'Options', field: 'options', groupByField: 'id' }
+        { header: 'Options with groupBy', field: 'options', groupByField: 'id' }
+      ),
+      new Column(
+        [
+          new TextColumnElement('desc'),
+          new IconColumnElement(this.getIconForCarOption.bind(this))
+        ],
+        { header: 'Options without groupBy', field: 'options' }
       ),
       new Column(
         new ImageColumnElement('https://avatars2.githubusercontent.com/u/5260028?s=88&v=4', { width: '100%' }),
@@ -78,11 +85,28 @@ export class ArrayDataTypeTestComponent implements OnInit {
     ];
   }
 
+  private getDescForCarOption(option: any): string {
+    const desc = option.value.reduce((p, c) => {
+      return p.desc + ' ,' + c.desc;
+    });
+    if (typeof desc === 'string') {
+      return desc;
+    } else {
+      return option.value[0].desc;
+    }
+  }
+
   private getIconForCarOption(option: any): string {
+    return this.getIconForCarOptionId(option.id);
+  }
 
-    return 'fas fa-' + option.desc;
+  private getIconForCarOptionGroupBy(option: any): string {
+    return this.getIconForCarOptionId(+option.key);
+  }
 
-    switch (option.id) {
+
+  private getIconForCarOptionId(id: number) {
+    switch (id) {
       case 1:
         return 'fas fa-chess-rook';
       case 2:
@@ -90,7 +114,5 @@ export class ArrayDataTypeTestComponent implements OnInit {
       case 3:
         return 'fas fa-dharmachakra';
     }
-
   }
-
 }

@@ -1,6 +1,6 @@
 <div [align]="column.align ? column.align : 'right'" [class]="column.containerClass ? column.containerClass : ''">
-  <div *ngFor="let rowData of (rowDataArray | groupBy: column.groupByField)">
-    <div *ngFor="let data of rowData.value">
+  <div *ngFor="let data of (rowDataArray ? (rowDataArray| groupBy: column.groupByField) : [data])">
+  
       <span *ngFor='let columnElement of column.elements' [ngSwitch]="columnElement.type">
         <span *ngSwitchCase="'datetime'" (click)='columnElement.onClick(data);'>
           <span [ngSwitch]="columnElement.pipe">
@@ -73,6 +73,6 @@
           </button>
         </span>
       </span>
-    </div>
+    
   </div>
 </div>

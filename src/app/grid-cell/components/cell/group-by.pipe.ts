@@ -8,8 +8,8 @@ export class GroupByPipe implements PipeTransform {
 
   transform(collection: Array<any>, property: string): Array<any> {
     // prevents the application from breaking if the array of objects doesn't exist yet
-    if (!collection) {
-      return null;
+    if (!collection || !property) {
+      return collection;
     }
 
     const groupedCollection = collection.reduce((previous, current) => {
