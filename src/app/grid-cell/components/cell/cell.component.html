@@ -40,6 +40,7 @@
           </span>
         </span>
       </span>
+      <!--  -->
       <span *ngSwitchCase="'image'">
         <span *ngIf="columnElement.showImage ? (columnElement.showImage | cellFunction: rowData) : true"
           (click)='columnElement.onClick(rowData);'>
