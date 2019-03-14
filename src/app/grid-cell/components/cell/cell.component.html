@@ -2,7 +2,7 @@
   <div *ngFor="let data of (rowDataArray ? (rowDataArray| groupBy: column.groupByField) : [data])">
   
       <span *ngFor='let columnElement of column.elements' [ngSwitch]="columnElement.type">
-        <span *ngSwitchCase="'datetime'" (click)='columnElement.onClick(data);'>
+        <span *ngSwitchCase="'datetime'" (click)="columnElement.onClick(data, $event);">
           <span [ngSwitch]="columnElement.pipe">
             <span *ngSwitchCase="'amDateFormat'"
               [ngClass]="columnElement.getNgClass ? (columnElement.getNgClass | cellFunction: data) : {}">
@@ -21,7 +21,7 @@
         <span *ngSwitchCase="'icon'">
 
           <span [ngSwitch]="columnElement.showIcon ? (columnElement.showIcon | cellFunction: data) : undefined"
-            (click)='columnElement.onClick(data);'>
+            (click)="columnElement.onClick(data, $event);">
             <span *ngSwitchCase="undefined">
               <span [ngSwitch]="columnElement.field === undefined">
                 <span *ngSwitchCase="true">
@@ -43,7 +43,7 @@
         </span>
         <span *ngSwitchCase="'image'">
           <span *ngIf="columnElement.showImage ? (columnElement.showImage | cellFunction: data) : true" 
-            (click)='columnElement.onClick(data);'>
+            (click)="columnElement.onClick(data, $event);">
             <img #img [class]="columnElement.class"
               [src]='columnElement.image ? (columnElement.image | cellFunction: data) : null' alt="" (error)="columnElement.getErrorImage(img)"
               [pTooltip]='columnElement.tooltip' tooltipPosition="left" [style.width]="columnElement.width">
@@ -51,7 +51,7 @@
         </span>
         <span *ngSwitchCase="'text'" [class]="columnElement.class"
           [ngClass]="columnElement.getNgClass ? (columnElement.getNgClass | cellFunction: data) : {}"
-          [pTooltip]='columnElement.tooltip' tooltipPosition="left" (click)='columnElement.onClick(data);'>
+          [pTooltip]='columnElement.tooltip' tooltipPosition="left" (click)="columnElement.onClick(data, $event);">
           <span [ngSwitch]="columnElement.field.constructor.name">
             <span *ngSwitchCase="'Function'">
               {{columnElement.field | cellFunction: data}}
@@ -68,7 +68,7 @@
         </span>
         <span *ngSwitchCase="'button'">
           <button [class]="columnElement.class" [ngClass]="columnElement.buttonStyle" [pTooltip]='columnElement.tooltip'
-            tooltipPosition="left" (click)='columnElement.onClick(data);'>
+            tooltipPosition="left" (click)="columnElement.onClick(data, $event);">
             {{columnElement.buttonText}}
           </button>
         </span>

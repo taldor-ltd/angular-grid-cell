@@ -3,5 +3,5 @@ export interface IColumnElementOptions {
   class?: string;
   tooltip?: string;
   getNgClass?: (data: {}) => {};
-  onClick?: (data: any) => any;
+  onClick?: (data: any, event: MouseEvent) => any;
 }

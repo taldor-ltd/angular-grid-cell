@@ -21,7 +21,7 @@ export class SimpleGridTestComponent implements OnInit {
     ];
 
     this.cols = [
-      new Column(new TextColumnElement('vin'), { header: 'Vin' }),
+      new Column(new TextColumnElement('vin', { onClick: (data, event) => alert(event.clientX)}), { header: 'Vin' }),
       new Column(new TextColumnElement('year'), { header: 'Year' }),
       new Column(new TextColumnElement('brand'), { header: 'Brand' }),
       new Column(new TextColumnElement('color'), { header: 'color' }),
