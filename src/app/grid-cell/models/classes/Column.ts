@@ -2,7 +2,7 @@ import { IColumnElement } from '../interfaces/IColumnElement';
 import { IColumnOptions } from '../interfaces/IColumnOptions';
 
 export class Column extends IColumnOptions {
-  elements: IColumnElement | IColumnElement[];
+  elements: IColumnElement[];
   header: string;
   field: string | Function = () => {};
 
