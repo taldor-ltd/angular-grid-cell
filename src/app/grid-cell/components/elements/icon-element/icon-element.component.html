@@ -1,0 +1,22 @@
+<span [ngSwitch]="columnElement.showIcon ? (columnElement.showIcon | cellFunction: data) : undefined"
+  (click)="columnElement.onClick(data, $event);">
+  <span *ngSwitchCase="undefined">
+    <span [ngSwitch]="columnElement.field === undefined">
+      <span *ngSwitchCase="true">
+        <i [ngClass]="columnElement.iconClass ? (columnElement.iconClass | cellFunction: data) : {}"
+          [pTooltip]='columnElement.tooltip' tooltipPosition="left"
+          [attr.id]="columnElement.id | cellFunction: data"></i>
+      </span>
+      <span *ngSwitchCase="false">
+        <i *ngIf="data[columnElement.field]"
+          [ngClass]="columnElement.iconClass ? (columnElement.iconClass | cellFunction: data) : {}"
+          [pTooltip]='columnElement.tooltip' tooltipPosition="left"
+          [attr.id]="columnElement.id | cellFunction: data"></i>
+      </span>
+    </span>
+  </span>
+  <span *ngSwitchCase="true">
+    <i [ngClass]="columnElement.iconClass ? (columnElement.iconClass | cellFunction: data) : {}"
+      [pTooltip]='columnElement.tooltip' tooltipPosition="left" [attr.id]="columnElement.id | cellFunction: data"></i>
+  </span>
+</span>

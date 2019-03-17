@@ -1,0 +1,14 @@
+<span [ngSwitch]="columnElement.pipe" (click)="columnElement.onClick(data, $event);">
+  <span *ngSwitchCase="'amDateFormat'" [attr.id]="columnElement.id | cellFunction: data"
+    [ngClass]="columnElement.getNgClass ? (columnElement.getNgClass | cellFunction: data) : {}">
+    {{data[columnElement.field] | amDateFormat:columnElement.format}}
+  </span>
+  <span *ngSwitchCase="'amTimeAgo'" [attr.id]="columnElement.id | cellFunction: data"
+    [ngClass]="columnElement.getNgClass ? (columnElement.getNgClass | cellFunction: data) : {}">
+    {{data[columnElement.field] | amTimeAgo}}
+  </span>
+  <span *ngSwitchCase="'amCalendar'" [attr.id]="columnElement.id | cellFunction: data"
+    [ngClass]="columnElement.getNgClass ? (columnElement.getNgClass | cellFunction: data) : {}">
+    {{data[columnElement.field] | amCalendar}}
+  </span>
+</span>

@@ -1,0 +1,7 @@
+<span *ngIf="columnElement.showImage ? (columnElement.showImage | cellFunction: data) : true"
+  (click)="columnElement.onClick(data, $event);">
+  <img #img [class]="columnElement.class"
+    [src]='columnElement.image ? (columnElement.image | cellFunction: data) : null' alt=""
+    (error)="columnElement.getErrorImage(img)" [pTooltip]='columnElement.tooltip' tooltipPosition="left"
+    [style.width]="columnElement.width" [attr.id]="columnElement.id | cellFunction: data">
+</span>
