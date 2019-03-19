@@ -1,6 +1,6 @@
 {
   "name": "@taldor-ltd/angular-grid-cell",
-  "version": "1.4.0",
+  "version": "1.4.2",
   "description": "Taldor - angular grid cell component",
   "main": "./bundles/angular-grid-cell.umd.js",
   "module": "./fesm5/angular-grid-cell.js",
