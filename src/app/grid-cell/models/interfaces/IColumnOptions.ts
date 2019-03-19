@@ -1,4 +1,5 @@
 import { ColumnAlign } from '../enums/column-align.enum';
+import { GenerateIdAttr } from '../types/generate-id-attr';
 
 export class IColumnOptions {
   header: string;
@@ -8,5 +9,5 @@ export class IColumnOptions {
   align?: ColumnAlign;
   containerClass?: string;
   groupByField?: string;
-  id?: string;
+  id?: string | GenerateIdAttr;
 }

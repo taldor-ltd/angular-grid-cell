@@ -1,4 +1,4 @@
-<div [attr.id]="column.id" [align]="column.align ? column.align : 'right'"
+<div [attr.id]="column.id | cellFunction: data" [align]="column.align ? column.align : 'right'"
   [class]="column.containerClass ? column.containerClass : ''">
   <div *ngFor="let data of (rowDataArray ? (rowDataArray| groupBy: column.groupByField) : [data])">
     <span *ngFor='let columnElement of column.elements' [ngSwitch]="columnElement.type">
