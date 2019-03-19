@@ -1,4 +1,5 @@
-<div [align]="column.align ? column.align : 'right'" [class]="column.containerClass ? column.containerClass : ''">
+<div [attr.id]="column.id" [align]="column.align ? column.align : 'right'"
+  [class]="column.containerClass ? column.containerClass : ''">
   <div *ngFor="let data of (rowDataArray ? (rowDataArray| groupBy: column.groupByField) : [data])">
     <span *ngFor='let columnElement of column.elements' [ngSwitch]="columnElement.type">
       <span *ngSwitchCase="'datetime'" (click)="columnElement.onClick(data, $event);">

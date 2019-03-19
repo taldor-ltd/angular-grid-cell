@@ -8,4 +8,5 @@ export class IColumnOptions {
   align?: ColumnAlign;
   containerClass?: string;
   groupByField?: string;
+  id?: string;
 }
