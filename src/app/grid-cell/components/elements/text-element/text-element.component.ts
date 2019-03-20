@@ -6,14 +6,9 @@ import { ColumnElement } from 'src/app/grid-cell/models/classes/column-element';
   templateUrl: './text-element.component.html',
   styleUrls: ['./text-element.component.css']
 })
-export class TextElementComponent implements OnInit {
-
-  @Input() columnElement: ColumnElement;
+export class TextElementComponent extends ColumnElement implements OnInit {
   @Input() data: any;
-
-  constructor() { }
 
   ngOnInit() {
   }
-
 }
