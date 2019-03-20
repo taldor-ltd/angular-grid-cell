@@ -28,7 +28,13 @@ export class SimpleGridTestComponent implements OnInit {
       new Column(new TextColumnElement('year', { id: 'year'}), { header: 'Year' }),
       new Column(new TextColumnElement('brand'), { header: 'Brand' }),
       new Column(new TextColumnElement('color'), { header: 'color' }),
-      new Column(new ImageColumnElement((data) => data.pic, { errorImage: '/assets/img/bad.png' }), {header: 'image'}),
+      new Column(
+        new ImageColumnElement(
+          (data) => data.pic,
+          { errorImage: '/assets/img/bad.png', onClick: () => alert('I clicked this image!') }
+        ),
+        {header: 'image'}
+      ),
       new Column(new ImageColumnElement((data) => data.pic, { errorImage: '/assets/img/bad1.png' }), {header: 'image'})
     ];
   }
