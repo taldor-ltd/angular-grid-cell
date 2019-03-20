@@ -6,5 +6,5 @@ export class ColumnElementOptions {
   class?: string;
   tooltip?: string;
   getNgClass?: (data: {}) => {};
-  onClick?: Function;
+  onClick?: (data: any, event: MouseEvent) => any;
 }
