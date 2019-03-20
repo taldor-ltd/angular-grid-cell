@@ -1,11 +1,11 @@
-import { IColumnElement } from '../interfaces/IColumnElement';
-import { IColumnElementOptions } from '../interfaces/IColumnElementOptions';
+import { ColumnElement } from './column-element';
+import { ColumnElementOptions } from './column-element-options';
 
-export class TextColumnElement implements IColumnElement {
-  field: string | Function;
+export class TextColumnElement extends ColumnElement {
   type: string;
 
-  constructor(field: string | Function, options?: IColumnElementOptions) {
+  constructor(field: string | Function, options?: ColumnElementOptions) {
+    super();
     this.type = 'text';
     this.field = field;
     if (options) {

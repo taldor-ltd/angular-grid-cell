@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { IColumnElement } from 'src/app/grid-cell/models/interfaces/IColumnElement';
+import { ColumnElement } from 'src/app/grid-cell/models/classes/column-element';
 
 @Component({
   selector: 'tld-button-element',
@@ -8,10 +8,10 @@ import { IColumnElement } from 'src/app/grid-cell/models/interfaces/IColumnEleme
 })
 export class ButtonElementComponent implements OnInit {
 
-  @Input() columnElement: IColumnElement;
+  @Input() columnElement: ColumnElement;
   @Input() data: any;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
   }

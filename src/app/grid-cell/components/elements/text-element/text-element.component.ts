@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { IColumnElement } from 'src/app/grid-cell/models/interfaces/IColumnElement';
-
+import { ColumnElement } from 'src/app/grid-cell/models/classes/column-element';
 
 @Component({
   selector: 'tld-text-element',
@@ -9,7 +8,7 @@ import { IColumnElement } from 'src/app/grid-cell/models/interfaces/IColumnEleme
 })
 export class TextElementComponent implements OnInit {
 
-  @Input() columnElement: IColumnElement;
+  @Input() columnElement: ColumnElement;
   @Input() data: any;
 
   constructor() { }
