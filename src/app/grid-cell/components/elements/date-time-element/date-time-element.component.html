@@ -1,4 +1,4 @@
-<span [ngSwitch]="columnElement.pipe" (click)="columnElement.onClick(data, $event);">
+<span [ngSwitch]="columnElement.pipe">
   <span *ngSwitchCase="'amDateFormat'" [attr.id]="columnElement.id | cellFunction: data"
     [ngClass]="columnElement.getNgClass ? (columnElement.getNgClass | cellFunction: data) : {}">
     {{data[columnElement.field] | amDateFormat:columnElement.format}}
