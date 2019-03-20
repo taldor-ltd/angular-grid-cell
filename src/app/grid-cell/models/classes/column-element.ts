@@ -7,4 +7,5 @@ export class ColumnElement extends ColumnElementOptions {
   type: string;
   id?: string | GenerateIdAttr;
   @Input() columnElement: ColumnElement;
+  @Input() data: any;
 }

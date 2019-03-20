@@ -7,8 +7,6 @@ import { ColumnElement } from 'src/app/grid-cell/models/classes/column-element';
   styleUrls: ['./text-element.component.css']
 })
 export class TextElementComponent extends ColumnElement implements OnInit {
-  @Input() data: any;
-
   ngOnInit() {
   }
 }
