@@ -1,7 +1,7 @@
 
 <span [class]="columnElement.class"
   [ngClass]="columnElement.getNgClass ? (columnElement.getNgClass | cellFunction: data) : {}"
-  [pTooltip]='columnElement.tooltip' tooltipPosition="left" (click)="columnElement.onClick(data, $event);">
+  [pTooltip]='columnElement.tooltip' tooltipPosition="left">
   <span [ngSwitch]="columnElement.field.constructor.name">
     <span [attr.id]="columnElement.id | cellFunction: data" *ngSwitchCase="'Function'">
       {{columnElement.field | cellFunction: data}}

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { ColumnElement } from 'src/app/grid-cell/models/classes/column-element';
 
 @Component({
@@ -12,6 +12,13 @@ export class TextElementComponent implements OnInit {
   @Input() data: any;
 
   constructor() { }
+
+  @HostListener('click', ['$event'])
+  onclick(event: MouseEvent) {
+    if (this.columnElement.onClick) {
+      this.columnElement.onClick(this.data, event);
+    }
+  }
 
   ngOnInit() {
   }
