@@ -1,5 +1,5 @@
 <button [class]="columnElement.class" [ngClass]="columnElement.buttonStyle" [pTooltip]='columnElement.tooltip'
-tooltipPosition="left" (click)="columnElement.onClick(data, $event);"
+tooltipPosition="left"
 [attr.id]="columnElement.id | cellFunction: data">
 {{columnElement.buttonText}}
 </button>

@@ -6,13 +6,7 @@ import { ColumnElement } from 'src/app/grid-cell/models/classes/column-element';
   templateUrl: './button-element.component.html',
   styleUrls: ['./button-element.component.css']
 })
-export class ButtonElementComponent implements OnInit {
-
-  @Input() columnElement: ColumnElement;
-  @Input() data: any;
-
-  constructor() {}
-
+export class ButtonElementComponent extends ColumnElement implements OnInit {
   ngOnInit() {
   }
 
