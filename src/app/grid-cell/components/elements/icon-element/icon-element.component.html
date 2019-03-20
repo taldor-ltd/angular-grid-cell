@@ -1,5 +1,4 @@
-<span [ngSwitch]="columnElement.showIcon ? (columnElement.showIcon | cellFunction: data) : undefined"
-  (click)="columnElement.onClick(data, $event);">
+<span [ngSwitch]="columnElement.showIcon ? (columnElement.showIcon | cellFunction: data) : undefined">
   <span *ngSwitchCase="undefined">
     <span [ngSwitch]="columnElement.field === undefined">
       <span *ngSwitchCase="true">
