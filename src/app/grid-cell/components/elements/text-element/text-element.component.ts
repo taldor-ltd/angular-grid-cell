@@ -6,21 +6,7 @@ import { ColumnElement } from 'src/app/grid-cell/models/classes/column-element';
   templateUrl: './text-element.component.html',
   styleUrls: ['./text-element.component.css']
 })
-export class TextElementComponent implements OnInit {
-
-  @Input() columnElement: ColumnElement;
-  @Input() data: any;
-
-  constructor() { }
-
-  @HostListener('click', ['$event'])
-  onclick(event: MouseEvent) {
-    if (this.columnElement.onClick) {
-      this.columnElement.onClick(this.data, event);
-    }
-  }
-
+export class TextElementComponent extends ColumnElement implements OnInit {
   ngOnInit() {
   }
-
 }
