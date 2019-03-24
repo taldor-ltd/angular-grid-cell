@@ -1,12 +1,12 @@
-import { Component, OnInit, Input, HostListener } from '@angular/core';
-import { ColumnElement } from 'src/app/grid-cell/models/classes/column-element';
+import { Component, OnInit } from '@angular/core';
+import { BaseElementComponent } from 'src/app/grid-cell/models/classes/base-element-component';
 
 @Component({
   selector: 'tld-text-element',
   templateUrl: './text-element.component.html',
   styleUrls: ['./text-element.component.css']
 })
-export class TextElementComponent extends ColumnElement implements OnInit {
+export class TextElementComponent extends BaseElementComponent implements OnInit {
   ngOnInit() {
   }
 }

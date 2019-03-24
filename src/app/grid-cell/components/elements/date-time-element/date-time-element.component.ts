@@ -1,12 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ColumnElement } from 'src/app/grid-cell/models/classes/column-element';
+import { Component, OnInit } from '@angular/core';
+import { BaseElementComponent } from 'src/app/grid-cell/models/classes/base-element-component';
 
 @Component({
   selector: 'tld-date-time-element',
   templateUrl: './date-time-element.component.html',
   styleUrls: ['./date-time-element.component.css']
 })
-export class DateTimeElementComponent extends ColumnElement implements OnInit {
+export class DateTimeElementComponent extends BaseElementComponent implements OnInit {
   ngOnInit() {
   }
 

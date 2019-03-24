@@ -1,6 +1,6 @@
 import { ColumnAlign } from '../enums/column-align.enum';
 
-export class IColumnOptions {
+export class ColumnOptions {
   header: string;
   field?: string | Function;
   headerClass?: string;

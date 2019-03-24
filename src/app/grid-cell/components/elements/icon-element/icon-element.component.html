@@ -1,21 +1,21 @@
-<span [ngSwitch]="columnElement.showIcon ? (columnElement.showIcon | cellFunction: data) : undefined">
+<span [ngSwitch]="element.showIcon ? (element.showIcon | cellFunction: data) : undefined">
   <span *ngSwitchCase="undefined">
-    <span [ngSwitch]="columnElement.field === undefined">
+    <span [ngSwitch]="element.field === undefined">
       <span *ngSwitchCase="true">
-        <i [ngClass]="columnElement.iconClass ? (columnElement.iconClass | cellFunction: data) : {}"
-          [pTooltip]='columnElement.tooltip' tooltipPosition="left"
-          [attr.id]="columnElement.id | cellFunction: data"></i>
+        <i [ngClass]="element.iconClass ? (element.iconClass | cellFunction: data) : {}"
+          [pTooltip]='element.tooltip' tooltipPosition="left"
+          [attr.id]="element.id | cellFunction: data"></i>
       </span>
       <span *ngSwitchCase="false">
-        <i *ngIf="data[columnElement.field]"
-          [ngClass]="columnElement.iconClass ? (columnElement.iconClass | cellFunction: data) : {}"
-          [pTooltip]='columnElement.tooltip' tooltipPosition="left"
-          [attr.id]="columnElement.id | cellFunction: data"></i>
+        <i *ngIf="data[element.field]"
+          [ngClass]="element.iconClass ? (element.iconClass | cellFunction: data) : {}"
+          [pTooltip]='element.tooltip' tooltipPosition="left"
+          [attr.id]="element.id | cellFunction: data"></i>
       </span>
     </span>
   </span>
   <span *ngSwitchCase="true">
-    <i [ngClass]="columnElement.iconClass ? (columnElement.iconClass | cellFunction: data) : {}"
-      [pTooltip]='columnElement.tooltip' tooltipPosition="left" [attr.id]="columnElement.id | cellFunction: data"></i>
+    <i [ngClass]="element.iconClass ? (element.iconClass | cellFunction: data) : {}"
+      [pTooltip]='element.tooltip' tooltipPosition="left" [attr.id]="element.id | cellFunction: data"></i>
   </span>
 </span>

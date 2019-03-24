@@ -1,13 +1,14 @@
-import { IColumnElement } from '../interfaces/IColumnElement';
-import { IColumnOptions } from '../interfaces/IColumnOptions';
+import { Element } from './element';
+import { ColumnOptions } from './column-options';
 
-export class Column extends IColumnOptions {
-  elements: IColumnElement[];
+
+export class Column {
+  elements: Element[];
   header: string;
-  field: string | Function = () => {};
+  field: string | Function = () => { };
 
-  constructor(elements: IColumnElement | IColumnElement[], columnOptions: IColumnOptions) {
-    super();
+  constructor(elements: Element | Element[], columnOptions: ColumnOptions) {
+
     if (elements instanceof Array) {
       this.elements = elements;
     } else {

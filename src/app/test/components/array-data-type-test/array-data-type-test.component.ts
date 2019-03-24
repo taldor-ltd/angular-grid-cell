@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Column } from 'src/app/grid-cell/models/classes/Column';
-import { TextColumnElement } from 'src/app/grid-cell/models/classes/TextColumnElement';
-import { IconColumnElement } from 'src/app/grid-cell/models/classes/IconColumnElement';
-import { ImageColumnElement } from 'src/app/grid-cell/models/classes/ImageColumnElement';
+import { Column } from 'src/app/grid-cell/models/classes/column';
+import { TextElement } from 'src/app/grid-cell/models/classes/text-element';
+import { IconElement } from 'src/app/grid-cell/models/classes/icon-element';
+import { ImageElement } from 'src/app/grid-cell/models/classes/image-element';
 
 @Component({
   selector: 'tld-array-data-type-test',
@@ -56,30 +56,30 @@ export class ArrayDataTypeTestComponent implements OnInit {
     ];
 
     this.cols = [
-      new Column(new TextColumnElement('vin'), { header: 'Vin' }),
-      new Column(new TextColumnElement('year'), { header: 'Year' }),
-      new Column(new TextColumnElement('brand'), { header: 'Brand' }),
-      new Column(new TextColumnElement('color'), { header: 'Color' }),
+      new Column(new TextElement('vin'), { header: 'Vin' }),
+      new Column(new TextElement('year'), { header: 'Year' }),
+      new Column(new TextElement('brand'), { header: 'Brand' }),
+      new Column(new TextElement('color'), { header: 'Color' }),
       new Column(
         [
-          new TextColumnElement(this.getDescForCarOption.bind(this)),
-          new IconColumnElement(this.getIconForCarOptionGroupBy.bind(this))
+          new TextElement(this.getDescForCarOption.bind(this)),
+          new IconElement(this.getIconForCarOptionGroupBy.bind(this))
         ],
         { header: 'Options with groupBy', field: 'options', groupByField: 'id' }
       ),
       new Column(
         [
-          new TextColumnElement('desc'),
-          new IconColumnElement(this.getIconForCarOption.bind(this))
+          new TextElement('desc'),
+          new IconElement(this.getIconForCarOption.bind(this))
         ],
         { header: 'Options without groupBy', field: 'options' }
       ),
       new Column(
-        new ImageColumnElement('https://avatars2.githubusercontent.com/u/5260028?s=88&v=4', { width: '100%' }),
+        new ImageElement('https://avatars2.githubusercontent.com/u/5260028?s=88&v=4', { width: '100%' }),
         { header: 'image with width set' }
       ),
       new Column(
-        new ImageColumnElement('https://avatars2.githubusercontent.com/u/5260028?s=88&v=4'),
+        new ImageElement('https://avatars2.githubusercontent.com/u/5260028?s=88&v=4'),
         { header: 'image without width set' }
       )
     ];

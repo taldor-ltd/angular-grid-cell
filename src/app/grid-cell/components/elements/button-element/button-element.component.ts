@@ -1,12 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ColumnElement } from 'src/app/grid-cell/models/classes/column-element';
+import { Component, OnInit } from '@angular/core';
+import { BaseElementComponent } from 'src/app/grid-cell/models/classes/base-element-component';
 
 @Component({
   selector: 'tld-button-element',
   templateUrl: './button-element.component.html',
   styleUrls: ['./button-element.component.css']
 })
-export class ButtonElementComponent extends ColumnElement implements OnInit {
+export class ButtonElementComponent extends BaseElementComponent implements OnInit {
   ngOnInit() {
   }
 

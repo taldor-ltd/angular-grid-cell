@@ -1,17 +1,17 @@
 
-<span [class]="columnElement.class"
-  [ngClass]="columnElement.getNgClass ? (columnElement.getNgClass | cellFunction: data) : {}"
-  [pTooltip]='columnElement.tooltip' tooltipPosition="left">
-  <span [ngSwitch]="columnElement.field.constructor.name">
-    <span [attr.id]="columnElement.id | cellFunction: data" *ngSwitchCase="'Function'">
-      {{columnElement.field | cellFunction: data}}
+<span [class]="element.class"
+  [ngClass]="element.getNgClass ? (element.getNgClass | cellFunction: data) : {}"
+  [pTooltip]='element.tooltip' tooltipPosition="left">
+  <span [ngSwitch]="element.field.constructor.name">
+    <span [attr.id]="element.id | cellFunction: data" *ngSwitchCase="'Function'">
+      {{element.field | cellFunction: data}}
     </span>
-    <span [attr.id]="columnElement.id | cellFunction: data" *ngSwitchCase="'String'">
-      <ng-container *ngIf="columnElement.field.indexOf('.') !== -1; else elseTemplate">
-        {{data | cellNestedField: columnElement.field}}
+    <span [attr.id]="element.id | cellFunction: data" *ngSwitchCase="'String'">
+      <ng-container *ngIf="element.field.indexOf('.') !== -1; else elseTemplate">
+        {{data | cellNestedField: element.field}}
       </ng-container>
       <ng-template #elseTemplate>
-        {{data[columnElement.field]}}
+        {{data[element.field]}}
       </ng-template>
     </span>
   </span>

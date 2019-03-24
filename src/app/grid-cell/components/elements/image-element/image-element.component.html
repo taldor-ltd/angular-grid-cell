@@ -1,6 +1,6 @@
-<span *ngIf="columnElement.showImage ? (columnElement.showImage | cellFunction: data) : true">
-  <img #img [class]="columnElement.class"
-    [src]='columnElement.image ? (columnElement.image | cellFunction: data) : null' alt=""
-    (error)="columnElement.getErrorImage(img)" [pTooltip]='columnElement.tooltip' tooltipPosition="left"
-    [style.width]="columnElement.width" [attr.id]="columnElement.id | cellFunction: data">
+<span *ngIf="element.showImage ? (element.showImage | cellFunction: data) : true">
+  <img #img [class]="element.class"
+    [src]='element.image ? (element.image | cellFunction: data) : null' alt=""
+    (error)="element.getErrorImage(img)" [pTooltip]='element.tooltip' tooltipPosition="left"
+    [style.width]="element.width" [attr.id]="element.id | cellFunction: data">
 </span>
