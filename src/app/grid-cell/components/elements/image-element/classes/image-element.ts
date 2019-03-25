@@ -8,7 +8,7 @@ export class ImageElement extends ImageElementBase {
 
   constructor(image: string | ((data: any) => string), options?: ImageElementBase) {
     super();
-    this.type = 'image';
+    this['type'] = 'image';
     this.image = image;
     if (options) {
       Object.assign(this, options);

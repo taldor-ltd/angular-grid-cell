@@ -7,7 +7,7 @@ export class ButtonElement extends Element {
 
   constructor(buttonText: string, buttonStyle: string, options?: ElementBase) {
     super();
-    this.type = 'button';
+    this['type'] = 'button';
     this.buttonText = buttonText;
     this.buttonStyle = buttonStyle;
     if (options) {

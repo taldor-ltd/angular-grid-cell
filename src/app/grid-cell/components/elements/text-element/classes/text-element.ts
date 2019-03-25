@@ -5,7 +5,7 @@ export class TextElement extends Element {
 
   constructor(field: string | Function, options?: ElementBase) {
     super();
-    this.type = 'text';
+    this['type'] = 'text';
     this.field = field;
     if (options) {
       Object.assign(this, options);
