@@ -1,7 +1,7 @@
 import { ColumnAlign } from '../enums/column-align.enum';
 import { GenerateIdAttr } from '../types/generate-id-attr';
 
-export class IColumnOptions {
+export abstract class ColumnBase {
   header: string;
   field?: string | Function;
   headerClass?: string;

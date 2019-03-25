@@ -1,18 +1,18 @@
-import { IColumnElement } from '../interfaces/IColumnElement';
-import { IColumnOptions } from '../interfaces/IColumnOptions';
+import { Element } from './element';
+import { ColumnBase } from './column-base';
 
-export class Column extends IColumnOptions {
-  elements: IColumnElement[];
+export class Column extends ColumnBase {
+  elements: Element[];
   header: string;
-  field: string | Function = () => {};
+  field: string | Function = () => { };
 
-  constructor(elements: IColumnElement | IColumnElement[], columnOptions: IColumnOptions) {
+  constructor(elements: Element | Element[], options: ColumnBase) {
     super();
     if (elements instanceof Array) {
       this.elements = elements;
     } else {
       this.elements = [elements];
     }
-    Object.assign(this, columnOptions);
+    Object.assign(this, options);
   }
 }

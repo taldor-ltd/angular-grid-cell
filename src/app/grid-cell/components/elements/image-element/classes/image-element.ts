@@ -1,15 +1,14 @@
-import { IColumnElement } from '../interfaces/IColumnElement';
-import { IImageColumnElementOptions } from '../interfaces/IImageColumnElementOptions';
+import { ImageElementBase } from './image-element-base';
 
-export class ImageColumnElement implements IColumnElement {
-  type: string;
+export class ImageElement extends ImageElementBase {
   image: string | ((data: any) => string);
   width: string;
   showImage: (data: {}) => boolean;
   errorImage: string;
 
-  constructor(image: string | ((data: any) => string), options?: IImageColumnElementOptions) {
-    this.type = 'image';
+  constructor(image: string | ((data: any) => string), options?: ImageElementBase) {
+    super();
+    this['type'] = 'image';
     this.image = image;
     if (options) {
       Object.assign(this, options);

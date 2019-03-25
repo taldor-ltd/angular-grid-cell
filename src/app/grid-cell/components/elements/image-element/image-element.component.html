@@ -1,0 +1,6 @@
+<span *ngIf="element.showImage ? (element.showImage | cellFunction: data) : true">
+  <img #img [class]="element.class"
+    [src]='element.image ? (element.image | cellFunction: data) : null' alt=""
+    (error)="element.getErrorImage(img)" [pTooltip]='element.tooltip' tooltipPosition="left"
+    [style.width]="element.width" [attr.id]="element.id | cellFunction: data">
+</span>

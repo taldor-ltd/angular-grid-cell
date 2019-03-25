@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { Column } from '../../models/classes/Column';
+import { Column } from '../../models/classes/column';
 
 @Component({
   selector: 'tld-cell',

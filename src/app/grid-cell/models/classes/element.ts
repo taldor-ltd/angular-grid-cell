@@ -1,7 +1,7 @@
 import { GenerateIdAttr } from '../types/generate-id-attr';
 
-export interface IColumnElementOptions {
-  field?: string;
+export abstract class Element {
+  field?: string | Function;
   id?: string | GenerateIdAttr;
   class?: string;
   tooltip?: string;
