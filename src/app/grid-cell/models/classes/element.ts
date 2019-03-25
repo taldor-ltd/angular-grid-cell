@@ -1,6 +1,10 @@
 import { GenerateIdAttr } from '../types/generate-id-attr';
-import { ElementBase } from './element-base';
 
-export abstract class Element extends ElementBase {
-    id?: string | GenerateIdAttr;
+export abstract class Element {
+  field?: string | Function;
+  id?: string | GenerateIdAttr;
+  class?: string;
+  tooltip?: string;
+  getNgClass?: (data: {}) => {};
+  onClick?: (data: any, event: MouseEvent) => any;
 }

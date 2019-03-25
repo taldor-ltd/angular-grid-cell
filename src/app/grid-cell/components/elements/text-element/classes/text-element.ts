@@ -1,9 +1,8 @@
 import { Element } from 'src/app/grid-cell/models/classes/element';
-import { ElementBase } from 'src/app/grid-cell/models/classes/element-base';
 
 export class TextElement extends Element {
 
-  constructor(field: string | Function, options?: ElementBase) {
+  constructor(field: string | Function, options?: Element) {
     super();
     this['type'] = 'text';
     this.field = field;
