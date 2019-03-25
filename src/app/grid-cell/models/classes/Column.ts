@@ -1,19 +1,18 @@
 import { Element } from './element';
-import { ColumnOptions } from './column-options';
+import { ColumnBase } from './column-base';
 
-
-export class Column {
+export class Column extends ColumnBase {
   elements: Element[];
   header: string;
   field: string | Function = () => { };
 
-  constructor(elements: Element | Element[], columnOptions: ColumnOptions) {
-
+  constructor(elements: Element | Element[], options: ColumnBase) {
+    super();
     if (elements instanceof Array) {
       this.elements = elements;
     } else {
       this.elements = [elements];
     }
-    Object.assign(this, columnOptions);
+    Object.assign(this, options);
   }
 }

@@ -1,7 +1,7 @@
 import { GenerateIdAttr } from '../types/generate-id-attr';
-import { ElementOptions } from './element-options';
+import { ElementBase } from './element-base';
 
-export class Element extends ElementOptions {
-    type: string;
+export abstract class Element extends ElementBase {
+    type?: string;
     id?: string | GenerateIdAttr;
 }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Column } from 'src/app/grid-cell/models/classes/column';
-import { TextElement } from 'src/app/grid-cell/models/classes/text-element';
-import { IconElement } from 'src/app/grid-cell/models/classes/icon-element';
-import { ImageElement } from 'src/app/grid-cell/models/classes/image-element';
+import { TextElement } from 'src/app/grid-cell/components/elements/text-element/classes/text-element';
+import { IconElement } from 'src/app/grid-cell/components/elements/icon-element/classes/icon-element';
+import { ImageElement } from 'src/app/grid-cell/components/elements/image-element/classes/image-element';
 
 @Component({
   selector: 'tld-array-data-type-test',

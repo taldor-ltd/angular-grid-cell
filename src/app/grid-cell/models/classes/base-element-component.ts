@@ -1,7 +1,7 @@
 import { Input, HostListener } from '@angular/core';
 import { Element } from './element';
 
-export class BaseElementComponent {
+export abstract class BaseElementComponent {
 
   @Input() element: Element;
   @Input() data: any;

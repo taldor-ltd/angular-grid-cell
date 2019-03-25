@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Column } from 'src/app/grid-cell/models/classes/column';
-import { TextElement } from 'src/app/grid-cell/models/classes/text-element';
-import { ImageElement } from 'src/app/grid-cell/models/classes/image-element';
+import { TextElement } from 'src/app/grid-cell/components/elements/text-element/classes/text-element';
+import { ImageElement } from 'src/app/grid-cell/components/elements/image-element/classes/image-element';
+import { IconElement } from 'src/app/grid-cell/components/elements/icon-element/classes/icon-element';
 
 @Component({
   selector: 'tld-simple-grid-test',
@@ -35,7 +36,11 @@ export class SimpleGridTestComponent implements OnInit {
         ),
         {header: 'image'}
       ),
-      new Column(new ImageElement((data) => data.pic, { errorImage: '/assets/img/bad1.png' }), {header: 'image'})
+      new Column(new ImageElement((data) => data.pic, { errorImage: '/assets/img/bad1.png' }), {header: 'image'}),
+      new Column(
+        new IconElement('fab fa-acquisitions-incorporated', { showIcon: (data: any) => true}),
+        { header: 'icon'}
+      )
     ];
   }
 

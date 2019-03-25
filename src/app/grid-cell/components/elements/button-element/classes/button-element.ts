@@ -1,11 +1,11 @@
-import { Element } from './element';
-import { ElementOptions } from './element-options';
+import { Element } from 'src/app/grid-cell/models/classes/element';
+import { ElementBase } from 'src/app/grid-cell/models/classes/element-base';
 
 export class ButtonElement extends Element {
   buttonStyle: string;
   buttonText: string;
 
-  constructor(buttonText: string, buttonStyle: string, options?: ElementOptions) {
+  constructor(buttonText: string, buttonStyle: string, options?: ElementBase) {
     super();
     this.type = 'button';
     this.buttonText = buttonText;

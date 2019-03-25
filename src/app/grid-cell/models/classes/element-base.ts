@@ -1,6 +1,6 @@
 import { GenerateIdAttr } from '../types/generate-id-attr';
 
-export class ElementOptions {
+export abstract class ElementBase {
   field?: string | Function;
   id?: string | GenerateIdAttr;
   class?: string;

@@ -1,15 +1,12 @@
-import { Element } from './element';
-import { ImageElementOptions } from './image-element-options';
+import { ImageElementBase } from './image-element-base';
 
-
-export class ImageElement extends Element {
-  
+export class ImageElement extends ImageElementBase {
   image: string | ((data: any) => string);
   width: string;
   showImage: (data: {}) => boolean;
   errorImage: string;
 
-  constructor(image: string | ((data: any) => string), options?: ImageElementOptions) {
+  constructor(image: string | ((data: any) => string), options?: ImageElementBase) {
     super();
     this.type = 'image';
     this.image = image;
