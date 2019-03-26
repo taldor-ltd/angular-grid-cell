@@ -38,6 +38,11 @@
       "script": "start",
       "path": "modules/demo/",
       "problemMatcher": []
+    },
+    {
+      "type": "npm",
+      "script": "demo.deploy",
+      "problemMatcher": []
     }
   ]
 }
