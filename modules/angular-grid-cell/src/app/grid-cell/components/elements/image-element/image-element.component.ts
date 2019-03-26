@@ -9,4 +9,5 @@ import { ImageElement } from './classes/image-element';
 })
 export class ImageElementComponent extends BaseElementComponent {
   @Input() element: ImageElement;
+  @Input() data: any;
 }

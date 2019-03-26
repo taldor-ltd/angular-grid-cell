@@ -9,4 +9,5 @@ import { ButtonElement } from './classes/button-element';
 })
 export class ButtonElementComponent extends BaseElementComponent {
   @Input() element: ButtonElement;
+  @Input() data: any;
 }

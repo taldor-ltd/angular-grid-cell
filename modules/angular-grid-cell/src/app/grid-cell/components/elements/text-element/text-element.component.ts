@@ -9,4 +9,5 @@ import { TextElement } from './classes/text-element';
 })
 export class TextElementComponent extends BaseElementComponent {
   @Input() element: TextElement;
+  @Input() data: any;
 }

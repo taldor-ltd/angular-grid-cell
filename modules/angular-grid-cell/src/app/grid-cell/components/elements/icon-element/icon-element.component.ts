@@ -9,4 +9,5 @@ import { IconElement } from './classes/icon-element';
 })
 export class IconElementComponent extends BaseElementComponent {
   @Input() element: IconElement;
+  @Input() data: any;
 }

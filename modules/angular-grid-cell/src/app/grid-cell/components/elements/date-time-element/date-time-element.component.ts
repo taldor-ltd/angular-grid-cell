@@ -9,4 +9,5 @@ import { DateTimeElement } from './classes/date-time-element';
 })
 export class DateTimeElementComponent extends BaseElementComponent {
   @Input() element: DateTimeElement;
+  @Input() data: any;
 }
