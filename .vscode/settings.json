@@ -4,5 +4,6 @@
     "tsickle",
     "tslib",
     "whitelisted"
-  ]
+  ],
+  "git.ignoreLimitWarning": true
 }
