@@ -6,27 +6,42 @@
     {
       "type": "npm",
       "script": "packagr",
+      "path": "modules/angular-grid-cell/",
       "problemMatcher": []
     },
     {
       "type": "npm",
       "script": "build",
+      "path": "modules/angular-grid-cell/",
       "problemMatcher": []
     },
     {
       "type": "npm",
       "script": "publish",
+      "path": "modules/angular-grid-cell/",
       "problemMatcher": []
     },
     {
       "type": "npm",
       "script": "start",
+      "path": "modules/angular-grid-cell/",
       "problemMatcher": []
     },
     {
       "type": "shell",
       "label": "npm link",
-      "command": "cd dist & npm link",
+      "command": "cd modules/angular-grid-cell/dist & npm link",
+      "problemMatcher": []
+    },
+    {
+      "type": "npm",
+      "script": "start",
+      "path": "modules/demo/",
+      "problemMatcher": []
+    },
+    {
+      "type": "npm",
+      "script": "demo.deploy",
       "problemMatcher": []
     }
   ]
