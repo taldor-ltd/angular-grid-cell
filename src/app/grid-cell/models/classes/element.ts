@@ -1,8 +1,8 @@
 import { GenerateIdAttr } from '../types/generate-id-attr';
 
 export abstract class Element {
-  field?: string | Function;
-  id?: string | GenerateIdAttr;
+  elementField?: string | Function;
+  elementId?: string | GenerateIdAttr;
   class?: string;
   tooltip?: string;
   getNgClass?: (data: {}) => {};

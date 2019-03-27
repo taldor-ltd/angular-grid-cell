@@ -18,7 +18,7 @@ export class ImageElement extends ImageElementBase {
     }
   }
 
-  private getErrorImage(img: HTMLImageElement): void {
+  public getErrorImage(img: HTMLImageElement): void {
     if (img) {
       if (!img.src.includes(this.errorImage)) {
         img.src = this.errorImage;

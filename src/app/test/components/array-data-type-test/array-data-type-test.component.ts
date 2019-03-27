@@ -97,7 +97,7 @@ export class ArrayDataTypeTestComponent implements OnInit {
   }
 
   private getIconForCarOption(option: any): string {
-    return this.getIconForCarOptionId(option.id);
+    return this.getIconForCarOptionId(option.elementId);
   }
 
   private getIconForCarOptionGroupBy(option: any): string {

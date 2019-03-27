@@ -1,4 +1,4 @@
-import { Element } from 'src/app/grid-cell/models/classes/element';
+import { Element } from '../../../../../grid-cell/models/classes/element';
 
 export class ButtonElement extends Element {
   buttonStyle: string;

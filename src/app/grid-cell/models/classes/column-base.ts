@@ -9,5 +9,5 @@ export abstract class ColumnBase {
   align?: ColumnAlign;
   containerClass?: string;
   groupByField?: string;
-  id?: string | GenerateIdAttr;
+  columnId?: string | GenerateIdAttr;
 }

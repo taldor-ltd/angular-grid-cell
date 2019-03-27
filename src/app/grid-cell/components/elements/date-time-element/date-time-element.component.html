@@ -1,14 +1,14 @@
 <span [ngSwitch]="element.pipe">
-  <span *ngSwitchCase="'amDateFormat'" [attr.id]="element.id | cellFunction: data"
+  <span *ngSwitchCase="'amDateFormat'" [attr.id]="element.elementId | cellFunction: data"
     [ngClass]="element.getNgClass ? (element.getNgClass | cellFunction: data) : {}">
-    {{data[element.field] | amDateFormat:element.format}}
+    {{elementData | amDateFormat:element.format}}
   </span>
-  <span *ngSwitchCase="'amTimeAgo'" [attr.id]="element.id | cellFunction: data"
+  <span *ngSwitchCase="'amTimeAgo'" [attr.id]="element.elementId | cellFunction: data"
     [ngClass]="element.getNgClass ? (element.getNgClass | cellFunction: data) : {}">
-    {{data[element.field] | amTimeAgo}}
+    {{elementData | amTimeAgo}}
   </span>
-  <span *ngSwitchCase="'amCalendar'" [attr.id]="element.id | cellFunction: data"
+  <span *ngSwitchCase="'amCalendar'" [attr.id]="element.elementId | cellFunction: data"
     [ngClass]="element.getNgClass ? (element.getNgClass | cellFunction: data) : {}">
-    {{data[element.field] | amCalendar}}
+    {{elementData | amCalendar}}
   </span>
 </span>

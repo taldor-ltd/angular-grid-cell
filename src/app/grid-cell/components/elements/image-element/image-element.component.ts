@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { BaseElementComponent } from 'src/app/grid-cell/models/classes/base-element-component';
+import { BaseElementComponent } from '../../../../grid-cell/models/classes/base-element-component';
 import { ImageElement } from './classes/image-element';
 
 @Component({

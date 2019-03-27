@@ -23,10 +23,10 @@ export class SimpleGridTestComponent implements OnInit {
 
     this.cols = [
       new Column(
-        new TextElement('vin', { onClick: (data, event) => alert(`vin: ${data.vin}, x: ${event.clientX}`), id: (data) => data.vin }),
+        new TextElement('vin', { onClick: (data, event) => alert(`vin: ${data.vin}, x: ${event.clientX}`), elementId: (data) => data.vin }),
         { header: 'Vin' }
       ),
-      new Column(new TextElement('year', { id: 'year'}), { header: 'Year', id: (car) => `year-${car.year}` }),
+      new Column(new TextElement('year', { elementId: 'year'}), { header: 'Year', id: (car) => `year-${car.year}` }),
       new Column(new TextElement('brand'), { header: 'Brand' }),
       new Column(new TextElement('color'), { header: 'color' }),
       new Column(

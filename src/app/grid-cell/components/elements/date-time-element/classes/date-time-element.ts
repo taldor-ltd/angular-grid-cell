@@ -1,4 +1,4 @@
-import { MomentPipe } from 'src/app/grid-cell/models/enums/moment-pipe.enum';
+import { MomentPipe } from '../../../../../grid-cell/models/enums/moment-pipe.enum';
 import { DateTimeElementBase } from './date-time-element-base';
 
 export class DateTimeElement extends DateTimeElementBase {
