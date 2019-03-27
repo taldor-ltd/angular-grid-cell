@@ -5,7 +5,7 @@
   </span>
   <span *ngSwitchCase="'amTimeAgo'" [attr.id]="element.elementId | cellFunction: data"
     [ngClass]="element.getNgClass ? (element.getNgClass | cellFunction: data) : {}">
-    {{elementData | amTimeAgo}}
+    {{elementData}}
   </span>
   <span *ngSwitchCase="'amCalendar'" [attr.id]="element.elementId | cellFunction: data"
     [ngClass]="element.getNgClass ? (element.getNgClass | cellFunction: data) : {}">

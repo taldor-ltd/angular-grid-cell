@@ -1,6 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BaseElementComponent } from '../../../../grid-cell/models/classes/base-element-component';
 import { DateTimeElement } from './classes/date-time-element';
+import { Moment } from 'moment';
+import { MomentModule } from 'ngx-moment';
+import * as moment from 'moment';
+
+const momentConstructor = moment;
 
 @Component({
   selector: 'tld-date-time-element',
@@ -9,7 +14,7 @@ import { DateTimeElement } from './classes/date-time-element';
 })
 export class DateTimeElementComponent extends BaseElementComponent implements OnInit {
   @Input() element: DateTimeElement;
-  elementData: Date;
+  elementData: string;
 
   ngOnInit(): void {
     if (typeof(this.element.elementField) === 'string') {
@@ -17,5 +22,6 @@ export class DateTimeElementComponent extends BaseElementComponent implements On
     } else {
       this.elementData = this.element.elementField();
     }
+    this.elementData = momentConstructor(this.elementData).from();
   }
 }
