@@ -2,8 +2,8 @@ import { Input, HostListener } from '@angular/core';
 import { Element } from './element';
 
 export abstract class BaseElementComponent {
-  element: Element;
-  data: any;
+  @Input() element: Element;
+  @Input() data: any;
 
   @HostListener('click', ['$event'])
   onclick(event: MouseEvent) {
