@@ -4,7 +4,7 @@ import { TextElement } from 'src/app/grid-cell/components/elements/text-element/
 import { ImageElement } from 'src/app/grid-cell/components/elements/image-element/classes/image-element';
 import { IconElement } from 'src/app/grid-cell/components/elements/icon-element/classes/icon-element';
 import { DateTimeElement } from 'src/app/grid-cell/components/elements/date-time-element/classes/date-time-element';
-import { MomentPipe } from 'src/app/grid-cell/models/enums/moment-pipe.enum';
+import { MomentFunc } from 'src/app/grid-cell/models/enums/moment-func.enum';
 
 @Component({
   selector: 'tld-simple-grid-test',
@@ -19,8 +19,8 @@ export class SimpleGridTestComponent implements OnInit {
 
   ngOnInit() {
     this.cars = [
-      { vin: 'ds31ff', year: 2012, brand: 'VW', color: 'Orange', pic: '/assets/img/good.png', timeAgo: '2019-03-26' },
-      { vin: '23431ff', year: 2013, brand: 'VW', color: 'Orange', pic: '/assets/img/trying-to-trigger-error.png', timeAgo: '2019-03-01' }
+      { vin: 'ds31ff', year: 2012, brand: 'VW', color: 'Orange', pic: '/assets/img/good.png', updateDate: '2019-03-26' },
+      { vin: '23431ff', year: 2013, brand: 'VW', color: 'Orange', pic: '/assets/img/trying-to-trigger-error.png', updateDate: '2019-03-01' }
     ];
 
     this.cols = [
@@ -44,8 +44,12 @@ export class SimpleGridTestComponent implements OnInit {
         { header: 'icon'}
       ),
       new Column(
-        new DateTimeElement(MomentPipe.amTimeAgo, { elementField: 'timeAgo'}),
-        { header: 'Time Ago'}
+        new DateTimeElement(MomentFunc.fromNow, { elementField: 'updateDate'}),
+        { header: 'Update Date - Time Ago'}
+      ),
+      new Column(
+        new DateTimeElement(MomentFunc.format, { elementField: 'updateDate', format: 'DD/MM/YYYY' }),
+        { header: 'Update Date - Format(DD/MM/YYYY)'}
       )
     ];
   }

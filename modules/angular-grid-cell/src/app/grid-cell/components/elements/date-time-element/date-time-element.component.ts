@@ -1,8 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BaseElementComponent } from '../../../../grid-cell/models/classes/base-element-component';
 import { DateTimeElement } from './classes/date-time-element';
-import { Moment } from 'moment';
-import { MomentModule } from 'ngx-moment';
 import * as moment from 'moment';
 
 const momentConstructor = moment;
@@ -22,6 +20,13 @@ export class DateTimeElementComponent extends BaseElementComponent implements On
     } else {
       this.elementData = this.element.elementField();
     }
-    this.elementData = momentConstructor(this.elementData).from();
+    switch (this.element.func) {
+      case 'fromNow':
+        this.elementData = momentConstructor(this.elementData).fromNow();
+        break;
+      case 'format':
+        this.elementData = momentConstructor(this.elementData).format(this.element.format);
+        break;
+    }
   }
 }

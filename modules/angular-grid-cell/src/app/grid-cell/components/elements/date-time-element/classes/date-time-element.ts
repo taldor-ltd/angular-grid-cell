@@ -1,13 +1,13 @@
-import { MomentPipe } from '../../../../../grid-cell/models/enums/moment-pipe.enum';
 import { DateTimeElementBase } from './date-time-element-base';
+import { MomentFunc } from 'src/app/grid-cell/models/enums/moment-func.enum';
 
 export class DateTimeElement extends DateTimeElementBase {
-  pipe: MomentPipe;
+  func: MomentFunc;
 
-  constructor(pipe: MomentPipe, options?: DateTimeElementBase) {
+  constructor(func: MomentFunc, options?: DateTimeElementBase) {
     super();
     this['type'] = 'datetime';
-    this.pipe = pipe;
+    this.func = func;
     if (options) {
       Object.assign(this, options);
     }
