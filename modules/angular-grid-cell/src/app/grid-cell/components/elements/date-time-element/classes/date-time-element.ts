@@ -1,5 +1,5 @@
 import { DateTimeElementBase } from './date-time-element-base';
-import { MomentFunc } from 'src/app/grid-cell/models/enums/moment-func.enum';
+import { MomentFunc } from '../../../../models/enums/moment-func.enum';
 
 export class DateTimeElement extends DateTimeElementBase {
   func: MomentFunc;
