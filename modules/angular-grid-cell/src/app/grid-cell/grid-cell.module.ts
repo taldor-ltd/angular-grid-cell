@@ -5,7 +5,6 @@ import { TooltipModule } from 'primeng/tooltip';
 
 import { CellComponent } from './components/cell/cell.component';
 import { CellFunctionPipe } from './components/cell/cell-function.pipe';
-import { CellNestedFieldPipe } from './components/cell/cell-nested-field.pipe';
 import { GroupByPipe } from './components/cell/group-by.pipe';
 import { TextElementComponent } from './components/elements/text-element/text-element.component';
 import { ButtonElementComponent } from './components/elements/button-element/button-element.component';
@@ -24,7 +23,6 @@ import { DateTimeElementComponent } from './components/elements/date-time-elemen
   declarations: [
     CellComponent,
     CellFunctionPipe,
-    CellNestedFieldPipe,
     GroupByPipe,
     TextElementComponent,
     ButtonElementComponent,
