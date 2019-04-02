@@ -19,7 +19,7 @@
       "port": 9222,
       "urlFilter": "http://localhost:4200/*",
       "sourceMaps": true,
-      "webRoot": "${workspaceFolder}"
+      "webRoot": "${workspaceFolder}/modules/angular-grid-cell"
     }
   ]
 }

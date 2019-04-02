@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { BaseElementComponent } from '../../../../grid-cell/models/classes/base-element-component';
 import { TextElement } from './classes/text-element';
 
@@ -7,12 +7,11 @@ import { TextElement } from './classes/text-element';
   templateUrl: './text-element.component.html',
   styleUrls: ['./text-element.component.css']
 })
-export class TextElementComponent extends BaseElementComponent implements OnInit {
-  elementData: string;
+export class TextElementComponent extends BaseElementComponent {
   @Input() element: TextElement;
   @Input() data: any;
 
-  ngOnInit(): void {
+  public get elementData(): string {
     if (this.data == null) {
       return;
     }
@@ -23,12 +22,13 @@ export class TextElementComponent extends BaseElementComponent implements OnInit
         for (let i = 0, len = fields.length; i < len; ++i) {
           value = value[fields[i]];
         }
-        this.elementData = value;
+        return value;
       } else {
-        this.elementData = this.data[this.element.elementField];
+        return this.data[this.element.elementField];
       }
     } else {
-      this.elementData = this.element.elementField(this.data);
+      return this.element.elementField(this.data);
     }
   }
+
 }

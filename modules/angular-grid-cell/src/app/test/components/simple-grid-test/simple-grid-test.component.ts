@@ -66,4 +66,13 @@ export class SimpleGridTestComponent implements OnInit {
     ];
   }
 
+  updateModel(): void {
+    this.cars[0].vin = 'sdf334';
+    this.cars[0].year = '2010';
+    this.cars[0].brand = 'Seat';
+    this.cars[0].color = 'Blue';
+    this.cars[0].updateDate = '2019-04-12';
+    this.cars[0].options.doors = 7;
+  }
+
 }
