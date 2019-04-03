@@ -1,4 +1,4 @@
-import { Element } from '../../../../../grid-cell/models/classes/element';
+import { Element } from '../../../../models/classes/element';
 
 export class TextElement extends Element {
 

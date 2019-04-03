@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Column, TextColumnElement } from '@taldor-ltd/angular-grid-cell';
+import { Column, TextElement } from '@taldor-ltd/angular-grid-cell';
+
 @Component({
   selector: 'app-text-element-column',
   templateUrl: './text-element-column.component.html',
@@ -17,7 +18,7 @@ export class TextElementColumnComponent implements OnInit {
 
   ngOnInit() {
     this.cols = [
-      new Column(new TextColumnElement('vin', { onClick: (data) => alert(`This is your data: ${data.vin}`) }), { header: 'Vin' })
+      new Column(new TextElement('vin', { onClick: (data) => alert(`This is your data: ${data.vin}`) }), { header: 'Vin' })
     ];
   }
 

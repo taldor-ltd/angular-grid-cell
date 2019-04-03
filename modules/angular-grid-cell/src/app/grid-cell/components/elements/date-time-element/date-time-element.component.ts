@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { BaseElementComponent } from '../../../../grid-cell/models/classes/base-element-component';
+import { BaseElementComponent } from '../../../models/classes/base-element-component';
 import { DateTimeElement } from './classes/date-time-element';
 import * as moment from 'moment';
 
