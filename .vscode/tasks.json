@@ -29,8 +29,20 @@
     },
     {
       "type": "shell",
-      "label": "npm link",
+      "label": "npm link - angular-grid-cell",
       "command": "cd modules/angular-grid-cell/dist & npm link",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "npm link - angular-grid-cell 2 demo",
+      "command": "cd modules/demo & npm link @taldor-ltd/angular-grid-cell",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "npm unlink - angular-grid-cell in demo",
+      "command": "cd modules/angular-grid-cell/dist & npm unlink demo",
       "problemMatcher": []
     },
     {
