@@ -20,7 +20,6 @@
     "@angular/platform-browser": "~7.2.0",
     "@angular/platform-browser-dynamic": "~7.2.0",
     "@angular/router": "~7.2.0",
-    "@taldor-ltd/angular-grid-cell": "^1.4.2",
     "core-js": "^2.5.4",
     "primeicons": "^1.0.0",
     "primeng": "^7.1.0",
