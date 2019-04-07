@@ -25,7 +25,10 @@
   "private": false,
   "peerDependencies": {
     "@angular/core": ">=4.0.0",
-    "@angular/common": ">=4.0.0"
+    "@angular/common": ">=4.0.0",
+    "moment": ">=2.20.1",
+    "primeicons": ">=1.0.0",
+    "primeng": ">=6.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.6.5",
@@ -34,6 +37,7 @@
     "@angular/common": "~7.1.0",
     "@angular/compiler": "~7.1.0",
     "@angular/compiler-cli": "^7.1.0",
+    "@angular/core": "~7.1.0",
     "@angular/forms": "~7.1.0",
     "@angular/http": "~7.1.0",
     "@angular/language-service": "^7.1.0",
