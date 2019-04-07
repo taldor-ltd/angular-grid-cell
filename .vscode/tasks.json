@@ -55,6 +55,11 @@
       "type": "npm",
       "script": "demo.deploy",
       "problemMatcher": []
+    },
+    {
+      "type": "npm",
+      "script": "demo.gh-pages",
+      "problemMatcher": []
     }
   ]
 }
