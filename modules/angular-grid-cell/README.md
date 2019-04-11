@@ -1,3 +1,1 @@
-# AngularGridCell
-
-[DEMO](https://taldor-ltd.github.io/angular-grid-cell/)
+Please see the [complete README on GitHub](https://github.com/taldor-ltd/angular-grid-cell/)
