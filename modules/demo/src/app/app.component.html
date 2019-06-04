@@ -1,1 +1,15 @@
-<app-text-element-column></app-text-element-column>
+<ul>
+  <li (click)="element = ElementType.text">Text</li>
+  <li (click)="element = ElementType.image">Image</li>
+</ul>
+<span [ngSwitch]="element">
+<p *ngSwitchCase="ElementType.text">
+  <app-text-element-column></app-text-element-column>
+</p>
+<p *ngSwitchCase="ElementType.image">
+    <app-image-element></app-image-element>
+</p>
+<p *ngSwitchDefault>
+
+</p>
+</span>

@@ -6,6 +6,7 @@ import { TableModule } from 'primeng/table';
 
 import { AppComponent } from './app.component';
 import { TextElementColumnComponent } from './components/text-element-column/text-element-column.component';
+import { ImageElementComponent } from './components/image-element/image-element.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { TextElementColumnComponent } from './components/text-element-column/tex
   ],
   declarations: [
     AppComponent,
-    TextElementColumnComponent
+    TextElementColumnComponent,
+    ImageElementComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

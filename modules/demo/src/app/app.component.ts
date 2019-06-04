@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ElementType } from './element-type.enum';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'demo';
+  element: ElementType = ElementType.text;
+  ElementType = ElementType;
 }
