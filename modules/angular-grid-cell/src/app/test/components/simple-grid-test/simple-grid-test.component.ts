@@ -35,7 +35,7 @@ export class SimpleGridTestComponent implements OnInit {
 
     this.cols = [
       new Column(
-        new TextElement('vin', { onClick: (data, event) => alert(`vin: ${data.vin}, x: ${event.clientX}`), elementId: (data) => data.vin }),
+        new TextElement('vin', { tooltip: this.tooltipFunction , onClick: (data, event) => alert(`vin: ${data.vin}, x: ${event.clientX}`), elementId: (data) => data.vin }),
         { header: 'Vin' }
       ),
       new Column(new TextElement('year', { elementId: 'year' }), { header: 'Year', columnId: (car) => `year-${car.year}` }),
@@ -73,6 +73,11 @@ export class SimpleGridTestComponent implements OnInit {
     this.cars[0].color = 'Blue';
     this.cars[0].updateDate = '2019-04-12';
     this.cars[0].options.doors = 7;
+  }
+
+  tooltipFunction(data:any){
+    console.log("in tooltipFunction()");
+    return data.vin;
   }
 
 }

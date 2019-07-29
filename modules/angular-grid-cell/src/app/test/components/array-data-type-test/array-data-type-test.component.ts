@@ -62,7 +62,7 @@ export class ArrayDataTypeTestComponent implements OnInit {
       new Column(new TextElement('color'), { header: 'Color' }),
       new Column(
         [
-          new TextElement(this.getDescForCarOption.bind(this)),
+          new TextElement(this.getDescForCarOption.bind(this),{tooltip:"this is a tooltip"}),
           new IconElement(this.getIconForCarOptionGroupBy.bind(this))
         ],
         { header: 'Options with groupBy', field: 'options', groupByField: 'id' }

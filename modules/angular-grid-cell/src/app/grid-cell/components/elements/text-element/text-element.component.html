@@ -1,4 +1,5 @@
-<span [class]="element.class" [ngClass]="element.getNgClass ? (element.getNgClass | cellFunction: data) : {}"
-  [pTooltip]='element.tooltip' tooltipPosition="left" [attr.id]="element.elementId | cellFunction: data">
+<span #span [class]="element.class" [ngClass]="element.getNgClass ? (element.getNgClass | cellFunction: data) : {}"
+  [pTooltip]='this.tooltip' tooltipPosition="left"
+  [attr.id]="element.elementId | cellFunction: data">
   {{elementData}}
 </span>

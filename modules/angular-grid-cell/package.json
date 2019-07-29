@@ -1,6 +1,6 @@
 {
   "name": "@taldor-ltd/angular-grid-cell",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Taldor - angular grid cell component",
   "main": "./bundles/angular-grid-cell.umd.js",
   "module": "./fesm5/angular-grid-cell.js",
@@ -31,7 +31,7 @@
     "primeng": ">=6.0.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.801.0",
+    "@angular-devkit/build-angular": "^0.12.4",
     "@angular/animations": "~7.1.0",
     "@angular/cli": "~7.1.0",
     "@angular/common": "~7.1.0",
