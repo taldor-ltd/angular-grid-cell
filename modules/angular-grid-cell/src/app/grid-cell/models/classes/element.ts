@@ -4,7 +4,7 @@ export abstract class Element {
   elementField?: string | Function;
   elementId?: string | GenerateIdAttr;
   class?: string;
-  tooltip?: string;
+  tooltip?: string | Function;
   getNgClass?: (data: {}) => {};
   onClick?: (data: any, event: MouseEvent) => any;
 }
