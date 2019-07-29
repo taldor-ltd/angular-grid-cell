@@ -56,7 +56,7 @@ export class SimpleGridTestComponent implements OnInit {
         { header: 'icon' }
       ),
       new Column(
-        new DateTimeElement(MomentFunc.fromNow, { elementField: 'updateDate' }),
+        new DateTimeElement(MomentFunc.format, { elementField: this.addDate }),
         { header: 'Update Date - Time Ago' }
       ),
       new Column(
@@ -78,6 +78,10 @@ export class SimpleGridTestComponent implements OnInit {
   tooltipFunction(data:any){
     console.log("in tooltipFunction()");
     return data.vin;
+  }
+
+  addDate(data:any){
+    return new Date(data.updateDate).setHours(12,12,12,12);
   }
 
 }
