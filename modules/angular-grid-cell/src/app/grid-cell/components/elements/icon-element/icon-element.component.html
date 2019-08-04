@@ -2,18 +2,18 @@
   <span *ngSwitchCase="undefined">
     <span [ngSwitch]="element.elementField === undefined">
       <span *ngSwitchCase="true">
-        <i [ngClass]="element.iconClass ? (element.iconClass | cellFunction: data) : {}" [pTooltip]='this.tooltip'
+        <i [ngClass]="element.iconClass ? (element.iconClass | cellFunction: data) : {}" [pTooltip]='this.tooltip' [escape]="false"
           tooltipPosition="left" [attr.id]="element.elementId | cellFunction: data"></i>
       </span>
       <span *ngSwitchCase="false">
         <i *ngIf="data[element.elementField.toString()]"
-          [ngClass]="element.iconClass ? (element.iconClass | cellFunction: data) : {}" [pTooltip]='this.tooltip'
+          [ngClass]="element.iconClass ? (element.iconClass | cellFunction: data) : {}" [pTooltip]='this.tooltip'[escape]="false"
           tooltipPosition="left" [attr.id]="element.elementId | cellFunction: data"></i>
       </span>
     </span>
   </span>
   <span *ngSwitchCase="true">
-    <i [ngClass]="element.iconClass ? (element.iconClass | cellFunction: data) : {}" [pTooltip]='this.tooltip'
+    <i [ngClass]="element.iconClass ? (element.iconClass | cellFunction: data) : {}" [pTooltip]='this.tooltip'[escape]="false"
       tooltipPosition="left" [attr.id]="element.elementId | cellFunction: data"></i>
   </span>
 </span>

@@ -1,4 +1,4 @@
 <span [attr.id]="element.elementId | cellFunction: data"
-  [ngClass]="element.getNgClass ? (element.getNgClass | cellFunction: data) : {}" [pTooltip]='this.tooltip'>
+  [ngClass]="element.getNgClass ? (element.getNgClass | cellFunction: data) : {}" [pTooltip]='this.tooltip' [escape]="false">
   {{elementData}}
 </span>

@@ -1,4 +1,4 @@
-<button [class]="element.class" [ngClass]="element.buttonStyle" [pTooltip]='this.tooltip' tooltipPosition="left"
+<button [class]="element.class" [ngClass]="element.buttonStyle" [pTooltip]='this.tooltip' tooltipPosition="left" [escape]="false"
     [attr.id]="element.elementId | cellFunction: data">
     {{element.buttonText}}
 </button>
