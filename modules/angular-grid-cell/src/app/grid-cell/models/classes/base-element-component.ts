@@ -3,7 +3,7 @@ import { Element } from './element';
 
 export abstract class BaseElementComponent {
   span: ElementRef;
-  tooltip : string;
+  tooltip: string;
 
   @Input() element: Element;
   @Input() data: any;
@@ -20,14 +20,14 @@ export abstract class BaseElementComponent {
             }
           } else if (typeof this.element.tooltip === 'string') {
             this.tooltip = this.element.tooltip;
-          } 
+          }
         }
       }, 0);
     }
   }
 
   constructor() {
-    
+
   }
 
   @HostListener('click', ['$event'])

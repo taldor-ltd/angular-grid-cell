@@ -1,16 +1,12 @@
-<p-table [columns]="cols" [value]="cars">
-  <ng-template pTemplate="header" let-columns>
-    <tr>
-      <th *ngFor="let col of columns">
-        {{col.header}}
-      </th>
-    </tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-car let-columns="columns">
-    <tr>
-      <td *ngFor="let col of columns">
-        <tld-cell [data]="car" [column]="col"></tld-cell>
-      </td>
-    </tr>
-  </ng-template>
-</p-table>
+<table border="1">
+  <tr>
+    <th *ngFor="let col of cols">
+      {{col.header}}
+    </th>
+  </tr>
+  <tr *ngFor="let car of cars">
+    <td *ngFor="let col of cols">
+      <tld-cell [data]="car" [column]="col"></tld-cell>
+    </td>
+  </tr>
+</table>

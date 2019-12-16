@@ -76,7 +76,7 @@ export class SimpleGridTestComponent implements OnInit {
   }
 
   tooltipFunction(data: any) {
-    console.log("in tooltipFunction()");
+    console.log('in tooltipFunction()');
     return `<b><u>${data.vin}</u></b>`;
   }
 
