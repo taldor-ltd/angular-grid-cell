@@ -65,10 +65,25 @@ export class SimpleGridTestComponent implements OnInit {
         { header: 'Update Date - Format(DD/MM/YYYY)' }
       ),
       new Column(
-        new ButtonElement('test', { getNgClass: data => {
-          return data['vin'] === 'ds31ff' ? 'btn-test' : '';
-        }}),
-        { header: 'button' }
+        new ButtonElement(
+          'test',
+          {
+            getNgClass: data => {
+            return data['vin'] === 'ds31ff' ? 'btn-test' : '';
+            }
+          }
+        ),
+        { header: 'styled button' }
+      ),
+      new Column(
+        new ButtonElement(
+          data => {
+            return data['vin'] === 'ds31ff' ? 'btn-vin-ds31ff' : 'btn-vin-unknown';
+          }
+        ),
+        {
+          header: 'dynamic btn text'
+        }
       )
     ];
   }
