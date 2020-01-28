@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { Column } from 'src/app/grid-cell/models/classes/column';
 import { TextElement } from 'src/app/grid-cell/components/elements/text-element/classes/text-element';
 import { ImageElement } from 'src/app/grid-cell/components/elements/image-element/classes/image-element';
@@ -6,6 +6,7 @@ import { IconElement } from 'src/app/grid-cell/components/elements/icon-element/
 import { DateTimeElement } from 'src/app/grid-cell/components/elements/date-time-element/classes/date-time-element';
 import { MomentFunc } from 'src/app/grid-cell/models/enums/moment-func.enum';
 import { ButtonElement } from 'src/app/grid-cell/components/elements/button-element/classes/button-element';
+import { CellComponent } from 'src/app/grid-cell/components/cell/cell.component';
 
 @Component({
   selector: 'tld-simple-grid-test',
@@ -15,6 +16,7 @@ import { ButtonElement } from 'src/app/grid-cell/components/elements/button-elem
 export class SimpleGridTestComponent implements OnInit {
   cars: any[];
   cols: Column[];
+  @ViewChildren('cell') myCells: QueryList<CellComponent>;
 
   constructor() { }
 
@@ -84,6 +86,16 @@ export class SimpleGridTestComponent implements OnInit {
         {
           header: 'dynamic btn text'
         }
+      ),
+      new Column(
+        new ButtonElement(
+          'change name', {
+            elementId: 'btnCN',
+            onClick: this.updateBtnName.bind(this)
+          }
+        ), {
+          header: 'change btn my name'
+        }
       )
     ];
   }
@@ -104,5 +116,14 @@ export class SimpleGridTestComponent implements OnInit {
 
   addDate(data: any) {
     return new Date(data.updateDate).setHours(12, 12, 12, 12);
+  }
+
+  updateBtnName(data: any): void {
+    const rowCells = this.myCells.filter(c => c.data === data);
+    const btnCell = rowCells.find(current => {
+      return current.cellElements.find(el => el.elementId === 'btnCN');
+    });
+    const btn = btnCell.cellElements.find(el => el.elementId === 'btnCN');
+    (<ButtonElement>btn).buttonText = 'changed!';
   }
 }

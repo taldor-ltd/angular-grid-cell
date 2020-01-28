@@ -5,7 +5,7 @@ export class ButtonElement extends Element {
 
   constructor(buttonText: string | Function, options?: Element) {
     super();
-    this['type'] = 'button';
+    this.type = 'button';
     this.buttonText = buttonText;
     if (options) {
       Object.assign(this, options);

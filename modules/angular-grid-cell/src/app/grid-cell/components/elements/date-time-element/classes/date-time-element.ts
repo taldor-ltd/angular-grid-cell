@@ -6,7 +6,7 @@ export class DateTimeElement extends DateTimeElementBase {
 
   constructor(func: MomentFunc, options?: DateTimeElementBase) {
     super();
-    this['type'] = 'datetime';
+    this.type = 'datetime';
     this.func = func;
     if (options) {
       Object.assign(this, options);
