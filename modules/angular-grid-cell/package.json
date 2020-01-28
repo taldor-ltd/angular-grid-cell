@@ -26,9 +26,7 @@
   "peerDependencies": {
     "@angular/core": ">=4.0.0",
     "@angular/common": ">=4.0.0",
-    "moment": ">=2.20.1",
-    "primeicons": ">=1.0.0",
-    "primeng": ">=6.0.0"
+    "moment": ">=2.20.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.12.4",
@@ -59,8 +57,6 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "moment": "^2.24.0",
     "ng-packagr": "^4.7.1",
-    "primeicons": "^1.0.0",
-    "primeng": "^7.0.5",
     "protractor": "^5.4.0",
     "rxjs": "^6.3.3",
     "ts-node": "~7.0.0",

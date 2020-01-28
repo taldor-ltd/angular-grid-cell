@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { GridCellModule } from '@taldor-ltd/angular-grid-cell';
-import { TableModule } from 'primeng/table';
 
 import { AppComponent } from './app.component';
 import { TextElementColumnComponent } from './components/text-element-column/text-element-column.component';
@@ -10,7 +9,7 @@ import { TextElementColumnComponent } from './components/text-element-column/tex
 @NgModule({
   imports: [
     BrowserModule,
-    TableModule,
+    // TableModule,
     GridCellModule
   ],
   declarations: [
