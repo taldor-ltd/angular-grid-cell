@@ -5,6 +5,7 @@ import { ImageElement } from 'src/app/grid-cell/components/elements/image-elemen
 import { IconElement } from 'src/app/grid-cell/components/elements/icon-element/classes/icon-element';
 import { DateTimeElement } from 'src/app/grid-cell/components/elements/date-time-element/classes/date-time-element';
 import { MomentFunc } from 'src/app/grid-cell/models/enums/moment-func.enum';
+import { ButtonElement } from 'src/app/grid-cell/components/elements/button-element/classes/button-element';
 
 @Component({
   selector: 'tld-simple-grid-test',
@@ -62,6 +63,12 @@ export class SimpleGridTestComponent implements OnInit {
       new Column(
         new DateTimeElement(MomentFunc.format, { elementField: 'updateDate', format: 'DD/MM/YYYY' }),
         { header: 'Update Date - Format(DD/MM/YYYY)' }
+      ),
+      new Column(
+        new ButtonElement('test', { getNgClass: data => {
+          return data['vin'] === 'ds31ff' ? 'btn-test' : '';
+        }}),
+        { header: 'button' }
       )
     ];
   }
