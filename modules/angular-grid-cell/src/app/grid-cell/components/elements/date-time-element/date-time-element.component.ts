@@ -18,7 +18,7 @@ export class DateTimeElementComponent extends BaseElementComponent implements On
     if (typeof(this.element.elementField) === 'string') {
       this.elementData = this.data[this.element.elementField];
     } else {
-      this.elementData = this.element.elementField();
+      this.elementData = this.element.elementField(this.data);
     }
     switch (this.element.func) {
       case 'fromNow':

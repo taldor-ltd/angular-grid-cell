@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { TableModule } from 'primeng/table';
 
 import { TestRoutingModule } from './test-routing.module';
 import { SimpleGridTestComponent } from './components/simple-grid-test/simple-grid-test.component';
@@ -12,7 +11,6 @@ import { ArrayDataTypeTestComponent } from './components/array-data-type-test/ar
   imports: [
     CommonModule,
     TestRoutingModule,
-    TableModule,
     GridCellModule
   ],
   declarations: [

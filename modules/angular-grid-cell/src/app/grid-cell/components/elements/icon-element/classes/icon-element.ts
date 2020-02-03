@@ -5,7 +5,7 @@ export class IconElement extends IconElementBase {
 
   constructor(iconClass: string | Function, options?: IconElementBase) {
     super();
-    this['type'] = 'icon';
+    this.type = 'icon';
     this.iconClass = iconClass;
     if (options) {
       Object.assign(this, options);

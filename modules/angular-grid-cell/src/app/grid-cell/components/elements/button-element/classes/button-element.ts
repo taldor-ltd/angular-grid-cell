@@ -1,14 +1,12 @@
 import { Element } from '../../../../models/classes/element';
 
 export class ButtonElement extends Element {
-  buttonStyle: string;
-  buttonText: string;
+  buttonText: string | Function;
 
-  constructor(buttonText: string, buttonStyle: string, options?: Element) {
+  constructor(buttonText: string | Function, options?: Element) {
     super();
-    this['type'] = 'button';
+    this.type = 'button';
     this.buttonText = buttonText;
-    this.buttonStyle = buttonStyle;
     if (options) {
       Object.assign(this, options);
     }

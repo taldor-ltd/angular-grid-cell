@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { TooltipModule } from 'primeng/tooltip';
-
 import { CellComponent } from './components/cell/cell.component';
 import { CellFunctionPipe } from './components/cell/cell-function.pipe';
 import { GroupByPipe } from './components/cell/group-by.pipe';
@@ -14,8 +12,7 @@ import { DateTimeElementComponent } from './components/elements/date-time-elemen
 
 @NgModule({
   imports: [
-    CommonModule,
-    TooltipModule
+    CommonModule
   ],
   exports: [
     CellComponent

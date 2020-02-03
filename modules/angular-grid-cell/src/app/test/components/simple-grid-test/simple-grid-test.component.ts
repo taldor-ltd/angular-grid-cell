@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { Column } from 'src/app/grid-cell/models/classes/column';
 import { TextElement } from 'src/app/grid-cell/components/elements/text-element/classes/text-element';
 import { ImageElement } from 'src/app/grid-cell/components/elements/image-element/classes/image-element';
 import { IconElement } from 'src/app/grid-cell/components/elements/icon-element/classes/icon-element';
 import { DateTimeElement } from 'src/app/grid-cell/components/elements/date-time-element/classes/date-time-element';
 import { MomentFunc } from 'src/app/grid-cell/models/enums/moment-func.enum';
+import { ButtonElement } from 'src/app/grid-cell/components/elements/button-element/classes/button-element';
+import { CellComponent } from 'src/app/grid-cell/components/cell/cell.component';
 
 @Component({
   selector: 'tld-simple-grid-test',
@@ -14,6 +16,7 @@ import { MomentFunc } from 'src/app/grid-cell/models/enums/moment-func.enum';
 export class SimpleGridTestComponent implements OnInit {
   cars: any[];
   cols: Column[];
+  @ViewChildren('cell') myCells: QueryList<CellComponent>;
 
   constructor() { }
 
@@ -35,7 +38,7 @@ export class SimpleGridTestComponent implements OnInit {
 
     this.cols = [
       new Column(
-        new TextElement('vin', { onClick: (data, event) => alert(`vin: ${data.vin}, x: ${event.clientX}`), elementId: (data) => data.vin }),
+        new TextElement('vin', { tooltip: this.tooltipFunction, onClick: (data, event) => alert(`vin: ${data.vin}, x: ${event.clientX}`), elementId: (data) => data.vin }),
         { header: 'Vin' }
       ),
       new Column(new TextElement('year', { elementId: 'year' }), { header: 'Year', columnId: (car) => `year-${car.year}` }),
@@ -56,12 +59,43 @@ export class SimpleGridTestComponent implements OnInit {
         { header: 'icon' }
       ),
       new Column(
-        new DateTimeElement(MomentFunc.fromNow, { elementField: 'updateDate' }),
+        new DateTimeElement(MomentFunc.format, { elementField: this.addDate }),
         { header: 'Update Date - Time Ago' }
       ),
       new Column(
         new DateTimeElement(MomentFunc.format, { elementField: 'updateDate', format: 'DD/MM/YYYY' }),
         { header: 'Update Date - Format(DD/MM/YYYY)' }
+      ),
+      new Column(
+        new ButtonElement(
+          'test',
+          {
+            getNgClass: data => {
+            return data['vin'] === 'ds31ff' ? 'btn-test' : '';
+            }
+          }
+        ),
+        { header: 'styled button' }
+      ),
+      new Column(
+        new ButtonElement(
+          data => {
+            return data['vin'] === 'ds31ff' ? 'btn-vin-ds31ff' : 'btn-vin-unknown';
+          }
+        ),
+        {
+          header: 'dynamic btn text'
+        }
+      ),
+      new Column(
+        new ButtonElement(
+          'change name', {
+            elementId: 'btnCN',
+            onClick: this.updateBtnName.bind(this)
+          }
+        ), {
+          header: 'change btn my name'
+        }
       )
     ];
   }
@@ -75,4 +109,21 @@ export class SimpleGridTestComponent implements OnInit {
     this.cars[0].options.doors = 7;
   }
 
+  tooltipFunction(data: any) {
+    console.log('in tooltipFunction()');
+    return `<b><u>${data.vin}</u></b>`;
+  }
+
+  addDate(data: any) {
+    return new Date(data.updateDate).setHours(12, 12, 12, 12);
+  }
+
+  updateBtnName(data: any): void {
+    const rowCells = this.myCells.filter(c => c.data === data);
+    const btnCell = rowCells.find(current => {
+      return current.cellElements.find(el => el.elementId === 'btnCN');
+    });
+    const btn = btnCell.cellElements.find(el => el.elementId === 'btnCN');
+    (<ButtonElement>btn).buttonText = 'changed!';
+  }
 }
