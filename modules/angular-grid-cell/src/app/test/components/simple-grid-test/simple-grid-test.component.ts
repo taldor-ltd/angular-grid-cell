@@ -107,11 +107,7 @@ export class SimpleGridTestComponent implements OnInit {
   }
 
   buildHtml(data: any) {
-
     return `<tld-test-me [year]="${data.year}"></tld-test-me>`;
-
-    // return `<label style="color: red">השנה ${data.year}? ?</label><textarea style="background-color: yellow"></textarea>`;
-
   }
 
   updateModel(): void {

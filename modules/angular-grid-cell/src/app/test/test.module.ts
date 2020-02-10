@@ -19,7 +19,7 @@ import { TestMeComponent } from './components/test-me/test-me.component';
     ArrayDataTypeTestComponent,
     TestMeComponent
   ],
-  entryComponents: [
+  exports: [
     TestMeComponent
   ]
 })
