@@ -9,6 +9,9 @@ import { ButtonElementComponent } from './components/elements/button-element/but
 import { ImageElementComponent } from './components/elements/image-element/image-element.component';
 import { IconElementComponent } from './components/elements/icon-element/icon-element.component';
 import { DateTimeElementComponent } from './components/elements/date-time-element/date-time-element.component';
+import { HtmlElementComponent } from './components/elements/html-element/html-element.component';
+import { SafeHtmlPipe } from './pipes/safe-html.pipe';
+import { SafeStylePipe } from './pipes/safe-style.pipe';
 
 @NgModule({
   imports: [
@@ -20,12 +23,15 @@ import { DateTimeElementComponent } from './components/elements/date-time-elemen
   declarations: [
     CellComponent,
     CellFunctionPipe,
+    SafeHtmlPipe,
+    SafeStylePipe,
     GroupByPipe,
     TextElementComponent,
     ButtonElementComponent,
     ImageElementComponent,
     IconElementComponent,
-    DateTimeElementComponent
+    DateTimeElementComponent,
+    HtmlElementComponent
   ]
 })
 export class GridCellModule { }

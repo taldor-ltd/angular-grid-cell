@@ -7,6 +7,7 @@ import { DateTimeElement } from '../elements/date-time-element/classes/date-time
 import { IconElement } from '../elements/icon-element/classes/icon-element';
 import { ImageElement } from '../elements/image-element/classes/image-element';
 import { TextElement } from '../elements/text-element/classes/text-element';
+import { HtmlElement } from '../elements/html-element/classes/html-element';
 
 @Component({
   selector: 'tld-cell',
@@ -49,6 +50,11 @@ export class CellComponent implements OnInit {
           const textElement = new TextElement('');
           Object.assign(textElement, element);
           this.cellElements.push(textElement);
+          break;
+        case 'html':
+          const htmlElement = new HtmlElement(null);
+          Object.assign(htmlElement, element);
+          this.cellElements.push(htmlElement);
           break;
       }
     });

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList, TemplateRef } from '@angular/core';
 import { Column } from 'src/app/grid-cell/models/classes/column';
 import { TextElement } from 'src/app/grid-cell/components/elements/text-element/classes/text-element';
 import { ImageElement } from 'src/app/grid-cell/components/elements/image-element/classes/image-element';
@@ -7,11 +7,16 @@ import { DateTimeElement } from 'src/app/grid-cell/components/elements/date-time
 import { MomentFunc } from 'src/app/grid-cell/models/enums/moment-func.enum';
 import { ButtonElement } from 'src/app/grid-cell/components/elements/button-element/classes/button-element';
 import { CellComponent } from 'src/app/grid-cell/components/cell/cell.component';
+import { HtmlElement } from 'src/app/grid-cell/components/elements/html-element/classes/html-element';
+import { TestMeComponent } from '../test-me/test-me.component';
 
 @Component({
   selector: 'tld-simple-grid-test',
   templateUrl: './simple-grid-test.component.html',
-  styleUrls: ['./simple-grid-test.component.css']
+  styleUrls: ['./simple-grid-test.component.css'] // ,
+  // entryComponents: [
+  //   TestMeComponent
+  // ]
 })
 export class SimpleGridTestComponent implements OnInit {
   cars: any[];
@@ -71,7 +76,7 @@ export class SimpleGridTestComponent implements OnInit {
           'test',
           {
             getNgClass: data => {
-            return data['vin'] === 'ds31ff' ? 'btn-test' : '';
+              return data['vin'] === 'ds31ff' ? 'btn-test' : '';
             }
           }
         ),
@@ -90,14 +95,23 @@ export class SimpleGridTestComponent implements OnInit {
       new Column(
         new ButtonElement(
           'change name', {
-            elementId: 'btnCN',
-            onClick: this.updateBtnName.bind(this)
-          }
-        ), {
-          header: 'change btn my name'
+          elementId: 'btnCN',
+          onClick: this.updateBtnName.bind(this)
         }
-      )
+        ), {
+        header: 'change btn my name'
+      }
+      ),
+      new Column(new HtmlElement(this.buildHtml.bind(this)), { header: 'my input field' })
     ];
+  }
+
+  buildHtml(data: any) {
+
+    return `<tld-test-me [year]="${data.year}"></tld-test-me>`;
+
+    // return `<label style="color: red">השנה ${data.year}? ?</label><textarea style="background-color: yellow"></textarea>`;
+
   }
 
   updateModel(): void {
@@ -119,11 +133,13 @@ export class SimpleGridTestComponent implements OnInit {
   }
 
   updateBtnName(data: any): void {
-    const rowCells = this.myCells.filter(c => c.data === data);
-    const btnCell = rowCells.find(current => {
-      return current.cellElements.find(el => el.elementId === 'btnCN');
-    });
-    const btn = btnCell.cellElements.find(el => el.elementId === 'btnCN');
-    (<ButtonElement>btn).buttonText = 'changed!';
+    // const rowCells = this.myCells.filter(c => c.data === data);
+    // const btnCell = rowCells.find(current => {
+    //   return current.cellElements.find(el => el.elementId === 'btnCN');
+    // });
+    // const btn = btnCell.cellElements.find(el => el.elementId === 'btnCN');
+    // (<ButtonElement>btn).buttonText = 'changed!';
   }
+
+
 }
