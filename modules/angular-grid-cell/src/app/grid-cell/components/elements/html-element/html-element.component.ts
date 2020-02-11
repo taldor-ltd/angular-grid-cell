@@ -1,14 +1,28 @@
-import { Component, Input, OnInit, ComponentRef, OnDestroy, ViewContainerRef, Compiler, ComponentFactory, NgModule, ModuleWithComponentFactories, ReflectiveInjector } from '@angular/core';
+import { Component, Input, OnInit, ComponentRef, OnDestroy, ViewContainerRef, Compiler, ComponentFactory, NgModule, ModuleWithComponentFactories, ReflectiveInjector, Type } from '@angular/core';
 import { BaseElementComponent } from '../../../models/classes/base-element-component';
 import { HtmlElement } from './classes/html-element';
-import { TestModule } from 'src/app/test/test.module';
 
 export function createComponentFactory(compiler: Compiler, metadata: Component): Promise<ComponentFactory<any>> {
   const cmpClass = class DynamicComponent {};
   const decoratedCmp = Component(metadata)(cmpClass);
 
   @NgModule({
-    imports: [ TestModule ],
+    declarations: [decoratedCmp]
+  })
+  class DynamicHtmlModule { }
+
+  return compiler.compileModuleAndAllComponentsAsync(DynamicHtmlModule)
+     .then((moduleWithComponentFactory: ModuleWithComponentFactories<any>) => {
+      return moduleWithComponentFactory.componentFactories.find(x => x.componentType === decoratedCmp);
+    });
+}
+
+export function createComponentFactoryWithModule(compiler: Compiler, metadata: Component, module: Type<any>): Promise<ComponentFactory<any>> {
+  const cmpClass = class DynamicComponent {};
+  const decoratedCmp = Component(metadata)(cmpClass);
+
+  @NgModule({
+    imports: [ module ],
     declarations: [decoratedCmp]
   })
   class DynamicHtmlModule { }
@@ -51,11 +65,19 @@ export class HtmlElementComponent extends BaseElementComponent implements OnInit
       template: template
     });
 
-    createComponentFactory(this.compiler, compMetadata)
+    if (this.element.module) {
+      createComponentFactoryWithModule(this.compiler, compMetadata, this.element.module)
       .then(factory => {
         const injector = ReflectiveInjector.fromResolvedProviders([], this.vcRef.parentInjector);
         this.cmpRef = this.vcRef.createComponent(factory, 0, injector, []);
       });
+    } else {
+      createComponentFactory(this.compiler, compMetadata)
+        .then(factory => {
+          const injector = ReflectiveInjector.fromResolvedProviders([], this.vcRef.parentInjector);
+          this.cmpRef = this.vcRef.createComponent(factory, 0, injector, []);
+        });
+    }
   }
 
   ngOnDestroy() {

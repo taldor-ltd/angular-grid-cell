@@ -10,3 +10,4 @@ export { DateTimeElement } from './src/app/grid-cell/components/elements/date-ti
 export { IconElement } from './src/app/grid-cell/components/elements/icon-element/classes/icon-element';
 export { ImageElement } from './src/app/grid-cell/components/elements/image-element/classes/image-element';
 export { TextElement } from './src/app/grid-cell/components/elements/text-element/classes/text-element';
+export { HtmlElement } from './src/app/grid-cell/components/elements/html-element/classes/html-element';

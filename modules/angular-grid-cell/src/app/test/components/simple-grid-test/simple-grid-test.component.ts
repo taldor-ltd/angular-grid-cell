@@ -8,7 +8,7 @@ import { MomentFunc } from 'src/app/grid-cell/models/enums/moment-func.enum';
 import { ButtonElement } from 'src/app/grid-cell/components/elements/button-element/classes/button-element';
 import { CellComponent } from 'src/app/grid-cell/components/cell/cell.component';
 import { HtmlElement } from 'src/app/grid-cell/components/elements/html-element/classes/html-element';
-import { TestMeComponent } from '../test-me/test-me.component';
+import { TestModule } from '../../test.module';
 
 @Component({
   selector: 'tld-simple-grid-test',
@@ -102,12 +102,16 @@ export class SimpleGridTestComponent implements OnInit {
         header: 'change btn my name'
       }
       ),
-      new Column(new HtmlElement(this.buildHtml.bind(this)), { header: 'my input field' })
+      new Column(new HtmlElement(this.buildHtml.bind(this), TestModule), { header: 'my input field' })
     ];
   }
 
   buildHtml(data: any) {
-    return `<tld-test-me [year]="${data.year}"></tld-test-me>`;
+    return `<tld-test-me [year]="2012"></tld-test-me>`;
+  }
+
+  getYear(): number {
+    return 2010;
   }
 
   updateModel(): void {
