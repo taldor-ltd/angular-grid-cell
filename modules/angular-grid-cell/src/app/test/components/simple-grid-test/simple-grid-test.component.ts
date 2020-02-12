@@ -26,6 +26,8 @@ export class SimpleGridTestComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    const htmlElement = new HtmlElement(this.buildHtml.bind(this), TestModule);
+    htmlElement['getYear'] = this.getYear;
     this.cars = [
       {
         vin: 'ds31ff', year: 2012, brand: 'VW', color: 'Orange', pic: '/assets/img/good.png', updateDate: '2019-03-26',
@@ -97,21 +99,20 @@ export class SimpleGridTestComponent implements OnInit {
           'change name', {
           elementId: 'btnCN',
           onClick: this.updateBtnName.bind(this)
+        }), {
+          header: 'change btn my name'
         }
-        ), {
-        header: 'change btn my name'
-      }
       ),
-      new Column(new HtmlElement(this.buildHtml.bind(this), TestModule), { header: 'my input field' })
+      new Column(htmlElement, { header: 'my input field' })
     ];
   }
 
   buildHtml(data: any) {
-    return `<tld-test-me [year]="2012"></tld-test-me>`;
+    return `<tld-test-me [year]="element.getYear(data)"></tld-test-me>`;
   }
 
-  getYear(): number {
-    return 2010;
+  getYear(data): number {
+    return data.year;
   }
 
   updateModel(): void {

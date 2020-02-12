@@ -64,18 +64,21 @@ export class HtmlElementComponent extends BaseElementComponent implements OnInit
       selector: 'dynamic-html',
       template: template
     });
-
     if (this.element.module) {
       createComponentFactoryWithModule(this.compiler, compMetadata, this.element.module)
       .then(factory => {
         const injector = ReflectiveInjector.fromResolvedProviders([], this.vcRef.parentInjector);
         this.cmpRef = this.vcRef.createComponent(factory, 0, injector, []);
+        this.cmpRef.instance.element = this.element;
+        this.cmpRef.instance.data = this.data;
       });
     } else {
       createComponentFactory(this.compiler, compMetadata)
         .then(factory => {
           const injector = ReflectiveInjector.fromResolvedProviders([], this.vcRef.parentInjector);
           this.cmpRef = this.vcRef.createComponent(factory, 0, injector, []);
+          this.cmpRef.instance.element = this.element;
+          this.cmpRef.instance.data = this.data;
         });
     }
   }
