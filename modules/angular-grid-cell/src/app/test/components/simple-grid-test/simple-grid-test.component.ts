@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChildren, QueryList, TemplateRef } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { Column } from 'src/app/grid-cell/models/classes/column';
 import { TextElement } from 'src/app/grid-cell/components/elements/text-element/classes/text-element';
 import { ImageElement } from 'src/app/grid-cell/components/elements/image-element/classes/image-element';
@@ -26,8 +26,6 @@ export class SimpleGridTestComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    const htmlElement = new HtmlElement(this.buildHtml.bind(this), TestModule);
-    htmlElement['getYear'] = this.getYear;
     this.cars = [
       {
         vin: 'ds31ff', year: 2012, brand: 'VW', color: 'Orange', pic: '/assets/img/good.png', updateDate: '2019-03-26',
@@ -103,12 +101,12 @@ export class SimpleGridTestComponent implements OnInit {
           header: 'change btn my name'
         }
       ),
-      new Column(htmlElement, { header: 'my input field' })
+      new Column(new HtmlElement(this, this.buildHtml.bind(this), TestModule), { header: 'my input field' })
     ];
   }
 
   buildHtml(data: any) {
-    return `<tld-test-me [year]="element.getYear(data)"></tld-test-me>`;
+    return `<tld-test-me [year]="getYear(data)"></tld-test-me>`;
   }
 
   getYear(data): number {

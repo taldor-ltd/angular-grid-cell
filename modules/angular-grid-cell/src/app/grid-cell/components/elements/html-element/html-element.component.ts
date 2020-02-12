@@ -71,6 +71,11 @@ export class HtmlElementComponent extends BaseElementComponent implements OnInit
         this.cmpRef = this.vcRef.createComponent(factory, 0, injector, []);
         this.cmpRef.instance.element = this.element;
         this.cmpRef.instance.data = this.data;
+        Object.getOwnPropertyNames(this.element.$scope.constructor.prototype).forEach(scopeKey => {
+          if (typeof(this.element.$scope.constructor.prototype[scopeKey]) === 'function') {
+            this.cmpRef.instance[scopeKey] = this.element.$scope[scopeKey];
+          }
+        });
       });
     } else {
       createComponentFactory(this.compiler, compMetadata)
@@ -79,6 +84,11 @@ export class HtmlElementComponent extends BaseElementComponent implements OnInit
           this.cmpRef = this.vcRef.createComponent(factory, 0, injector, []);
           this.cmpRef.instance.element = this.element;
           this.cmpRef.instance.data = this.data;
+          Object.getOwnPropertyNames(this.element.$scope.constructor.prototype).forEach(scopeKey => {
+            if (typeof(this.element.$scope.constructor.prototype[scopeKey]) === 'function') {
+              this.cmpRef.instance[scopeKey] = this.element.$scope[scopeKey];
+            }
+          });
         });
     }
   }

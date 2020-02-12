@@ -52,7 +52,7 @@ export class CellComponent implements OnInit {
           this.cellElements.push(textElement);
           break;
         case 'html':
-          const htmlElement = new HtmlElement(null);
+          const htmlElement = new HtmlElement(null, null);
           Object.assign(htmlElement, element);
           this.cellElements.push(htmlElement);
           break;
