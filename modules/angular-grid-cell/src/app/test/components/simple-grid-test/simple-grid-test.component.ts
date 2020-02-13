@@ -105,13 +105,11 @@ export class SimpleGridTestComponent implements OnInit {
           header: 'change btn my name'
         }
       ),
-      new Column(new HtmlElement(this, this.buildHtml.bind(this), TestModule), { header: 'my input field' }),
+      new Column(new HtmlElement(this.buildHtml.bind(this), this, TestModule), { header: 'my input field' }),
       new Column(
         new HtmlElement(
+          `<p-autoComplete [(ngModel)]="data.year" [suggestions]="filterYears" (completeMethod)="search($event)"></p-autoComplete>`,
           this,
-          `
-            <p-autoComplete [(ngModel)]="data.year" [suggestions]="filterYears" (completeMethod)="search($event)"></p-autoComplete>
-          `,
           [ FormsModule, AutoCompleteModule ]
         ),
         { header: 'my input field' }
