@@ -3,7 +3,7 @@ import { BaseElementComponent } from '../../../models/classes/base-element-compo
 import { HtmlElement } from './classes/html-element';
 
 export function createComponentFactory(compiler: Compiler, metadata: Component): Promise<ComponentFactory<any>> {
-  const cmpClass = class DynamicComponent {};
+  const cmpClass = class DynamicComponent { };
   const decoratedCmp = Component(metadata)(cmpClass);
 
   @NgModule({
@@ -12,23 +12,23 @@ export function createComponentFactory(compiler: Compiler, metadata: Component):
   class DynamicHtmlModule { }
 
   return compiler.compileModuleAndAllComponentsAsync(DynamicHtmlModule)
-     .then((moduleWithComponentFactory: ModuleWithComponentFactories<any>) => {
+    .then((moduleWithComponentFactory: ModuleWithComponentFactories<any>) => {
       return moduleWithComponentFactory.componentFactories.find(x => x.componentType === decoratedCmp);
     });
 }
 
-export function createComponentFactoryWithModule(compiler: Compiler, metadata: Component, module: Type<any>): Promise<ComponentFactory<any>> {
-  const cmpClass = class DynamicComponent {};
+export function createComponentFactoryWithModule(compiler: Compiler, metadata: Component, modules: Type<any> | Type<any>[]): Promise<ComponentFactory<any>> {
+  const cmpClass = class DynamicComponent { };
   const decoratedCmp = Component(metadata)(cmpClass);
 
   @NgModule({
-    imports: [ module ],
+    imports: [modules],
     declarations: [decoratedCmp]
   })
   class DynamicHtmlModule { }
 
   return compiler.compileModuleAndAllComponentsAsync(DynamicHtmlModule)
-     .then((moduleWithComponentFactory: ModuleWithComponentFactories<any>) => {
+    .then((moduleWithComponentFactory: ModuleWithComponentFactories<any>) => {
       return moduleWithComponentFactory.componentFactories.find(x => x.componentType === decoratedCmp);
     });
 }
@@ -54,7 +54,7 @@ export class HtmlElementComponent extends BaseElementComponent implements OnInit
       this.cmpRef.destroy();
     }
 
-    if (typeof(this.element.html) === 'function') {
+    if (typeof (this.element.html) === 'function') {
       template = this.element.html(this.data);
     } else {
       template = this.element.html;
@@ -64,33 +64,26 @@ export class HtmlElementComponent extends BaseElementComponent implements OnInit
       selector: 'dynamic-html',
       template: template
     });
-    if (this.element.module) {
-      createComponentFactoryWithModule(this.compiler, compMetadata, this.element.module)
-      .then(factory => {
-        const injector = ReflectiveInjector.fromResolvedProviders([], this.vcRef.parentInjector);
-        this.cmpRef = this.vcRef.createComponent(factory, 0, injector, []);
-        this.cmpRef.instance.element = this.element;
-        this.cmpRef.instance.data = this.data;
-        Object.getOwnPropertyNames(this.element.$scope.constructor.prototype).forEach(scopeKey => {
-          if (typeof(this.element.$scope.constructor.prototype[scopeKey]) === 'function') {
-            this.cmpRef.instance[scopeKey] = this.element.$scope[scopeKey];
-          }
-        });
-      });
+    if (this.element.modules) {
+      createComponentFactoryWithModule(this.compiler, compMetadata, this.element.modules).then(this.onFactoryResult());
     } else {
-      createComponentFactory(this.compiler, compMetadata)
-        .then(factory => {
-          const injector = ReflectiveInjector.fromResolvedProviders([], this.vcRef.parentInjector);
-          this.cmpRef = this.vcRef.createComponent(factory, 0, injector, []);
-          this.cmpRef.instance.element = this.element;
-          this.cmpRef.instance.data = this.data;
-          Object.getOwnPropertyNames(this.element.$scope.constructor.prototype).forEach(scopeKey => {
-            if (typeof(this.element.$scope.constructor.prototype[scopeKey]) === 'function') {
-              this.cmpRef.instance[scopeKey] = this.element.$scope[scopeKey];
-            }
-          });
-        });
+      createComponentFactory(this.compiler, compMetadata).then(this.onFactoryResult());
     }
+  }
+
+  private onFactoryResult(): (value: ComponentFactory<any>) => void | PromiseLike<void> {
+    return factory => {
+      const injector = ReflectiveInjector.fromResolvedProviders([], this.vcRef.parentInjector);
+      this.cmpRef = this.vcRef.createComponent(factory, 0, injector, []);
+      this.cmpRef.instance.element = this.element;
+      this.cmpRef.instance.data = this.data;
+      Object.getOwnPropertyNames(this.element.$scope).forEach(variableName => {
+        this.cmpRef.instance[variableName] = this.element.$scope[variableName];
+      });
+      Object.getOwnPropertyNames(this.element.$scope.constructor.prototype).forEach(functionName => {
+        this.cmpRef.instance[functionName] = this.element.$scope[functionName];
+      });
+    };
   }
 
   ngOnDestroy() {

@@ -3,15 +3,15 @@ import { Type } from '@angular/core';
 
 export class HtmlElement extends Element {
   html: string | Function;
-  module: Type<any>;
+  modules: Type<any> | Type<any>[];
   $scope: any;
 
-  constructor(scope: any, html: string | Function, module?: Type<any>, options?: Element) {
+  constructor(scope: any, html: string | Function, modules?: Type<any> | Type<any>[], options?: Element) {
     super();
     this.$scope = scope;
     this.type = 'html';
     this.html = html;
-    this.module = module;
+    this.modules = modules;
     if (options) {
       Object.assign(this, options);
     }

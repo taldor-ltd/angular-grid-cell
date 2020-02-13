@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
 import { Column } from 'src/app/grid-cell/models/classes/column';
 import { TextElement } from 'src/app/grid-cell/components/elements/text-element/classes/text-element';
 import { ImageElement } from 'src/app/grid-cell/components/elements/image-element/classes/image-element';
@@ -9,6 +11,7 @@ import { ButtonElement } from 'src/app/grid-cell/components/elements/button-elem
 import { CellComponent } from 'src/app/grid-cell/components/cell/cell.component';
 import { HtmlElement } from 'src/app/grid-cell/components/elements/html-element/classes/html-element';
 import { TestModule } from '../../test.module';
+import { AutoCompleteModule } from 'primeng/autocomplete';
 
 @Component({
   selector: 'tld-simple-grid-test',
@@ -21,6 +24,8 @@ import { TestModule } from '../../test.module';
 export class SimpleGridTestComponent implements OnInit {
   cars: any[];
   cols: Column[];
+  years: number[];
+  filterYears: number[];
   @ViewChildren('cell') myCells: QueryList<CellComponent>;
 
   constructor() { }
@@ -40,7 +45,6 @@ export class SimpleGridTestComponent implements OnInit {
         }
       }
     ];
-
     this.cols = [
       new Column(
         new TextElement('vin', { tooltip: this.tooltipFunction, onClick: (data, event) => alert(`vin: ${data.vin}, x: ${event.clientX}`), elementId: (data) => data.vin }),
@@ -101,8 +105,23 @@ export class SimpleGridTestComponent implements OnInit {
           header: 'change btn my name'
         }
       ),
-      new Column(new HtmlElement(this, this.buildHtml.bind(this), TestModule), { header: 'my input field' })
+      new Column(new HtmlElement(this, this.buildHtml.bind(this), TestModule), { header: 'my input field' }),
+      new Column(
+        new HtmlElement(
+          this,
+          `
+            <p-autoComplete [(ngModel)]="data.year" [suggestions]="filterYears" (completeMethod)="search($event)"></p-autoComplete>
+          `,
+          [ FormsModule, AutoCompleteModule ]
+        ),
+        { header: 'my input field' }
+      )
     ];
+    this.years = [ 2010, 2011, 2012, 2013, 2014];
+  }
+
+  search(event) {
+    this.filterYears = this.years.filter((year: number) => year.toString().includes(event.query));
   }
 
   buildHtml(data: any) {

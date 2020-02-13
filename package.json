@@ -7,5 +7,9 @@
   },
   "devDependencies": {
     "gh-pages": "^2.0.1"
+  },
+  "dependencies": {
+    "primeicons": "^2.0.0",
+    "primeng": "^9.0.0-rc.4"
   }
 }
