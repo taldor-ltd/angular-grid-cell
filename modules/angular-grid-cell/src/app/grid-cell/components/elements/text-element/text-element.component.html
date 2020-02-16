@@ -1,5 +1,27 @@
 <span #span [class]="element.class" [ngClass]="element.getNgClass ? (element.getNgClass | cellFunction: data) : {}"
-  [attr.title]='this.tooltip' tooltipPosition="left"
-  [attr.id]="element.elementId | cellFunction: data">
-  {{elementData}}
+  [attr.title]='this.tooltip' tooltipPosition="left" [attr.id]="element.elementId | cellFunction: data">
+  <span [ngSwitch]="fieldType">
+    <span *ngSwitchCase="FieldType.text">
+      {{data[element.elementField.toString()]}}
+    </span>
+    <span *ngSwitchCase="FieldType.nested">
+      <span [ngSwitch]="nestedFields.length">
+        <span *ngSwitchCase="2">
+          {{data[nestedFields[0]][nestedFields[1]]}}
+        </span>
+        <span *ngSwitchCase="3">
+          {{data[nestedFields[0]][nestedFields[1]][nestedFields[2]]}}
+        </span>
+        <span *ngSwitchCase="4">
+          {{data[nestedFields[0]][nestedFields[1]][nestedFields[2]][nestedFields[3]]}}
+        </span>
+        <span *ngSwitchCase="5">
+          {{data[nestedFields[0]][nestedFields[1]][nestedFields[2]][nestedFields[3]][nestedFields[4]]}}
+        </span>
+      </span>
+    </span>
+    <span *ngSwitchCase="FieldType.function">
+      {{elementFuncValue}}
+    </span>
+  </span>
 </span>
