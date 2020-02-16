@@ -2,7 +2,7 @@ import { Element } from '../../../../models/classes/element';
 
 export class TextElement extends Element {
 
-  constructor(field: string | Function, options?: Element) {
+  constructor(field: string | ((data) => any), options?: Element) {
     super();
     this.type = 'text';
     this.elementField = field;

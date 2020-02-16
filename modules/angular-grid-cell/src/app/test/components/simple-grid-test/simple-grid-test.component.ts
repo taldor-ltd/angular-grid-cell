@@ -119,11 +119,11 @@ export class SimpleGridTestComponent implements OnInit {
   }
 
   updateBtnName(data: any): void {
-    const rowCells = this.myCells.filter(c => c.data === data);
-    const btnCell = rowCells.find(current => {
-      return current.cellElements.find(el => el.elementId === 'btnCN');
-    });
-    const btn = btnCell.cellElements.find(el => el.elementId === 'btnCN');
-    (<ButtonElement>btn).buttonText = 'changed!';
+    // const rowCells = this.myCells.filter(c => c.data === data);
+    // const btnCell = rowCells.find(current => {
+    //   return current.cellElements.find(el => el.elementId === 'btnCN');
+    // });
+    // const btn = btnCell.cellElements.find(el => el.elementId === 'btnCN');
+    // (<ButtonElement>btn).buttonText = 'changed!';
   }
 }
