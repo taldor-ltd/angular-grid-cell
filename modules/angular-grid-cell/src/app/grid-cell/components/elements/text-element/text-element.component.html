@@ -1,8 +1,8 @@
 <span #span [class]="element.class" [ngClass]="element.getNgClass ? (element.getNgClass | cellFunction: data) : {}"
   [attr.title]='this.tooltip' tooltipPosition="left" [attr.id]="element.elementId | cellFunction: data">
   <span [ngSwitch]="fieldType">
-    <span *ngSwitchCase="fieldType">
-      {{data[element.elementField]}}
+    <span *ngSwitchCase="FieldType.text">
+      {{data[element.elementField.toString()]}}
     </span>
     <span *ngSwitchCase="FieldType.nested">
       <span [ngSwitch]="nestedFields.length">
