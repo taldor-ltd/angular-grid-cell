@@ -20,7 +20,7 @@ https://taldor-ltd.github.io/angular-grid-cell/
 ## Install
 
 ```
-npm i @taldor-ltd/angular-grid-cell moment primeicons primeng
+npm i @taldor-ltd/angular-grid-cell moment
 ```
 >Note: moment, primeicons and primeng are dependencies we're using internally in this repository.
 
