@@ -29,7 +29,8 @@ export class RtlGridComponent implements OnInit {
       }
     ];
     this.cols = [
-      new Column(new TextElement('vin'), { header: 'vin'})
+      new Column(new TextElement('year'), { header: 'Year', width: '300px' }),
+      new Column(new TextElement('vin'), { header: 'Vin', width: '300px' })
     ];
   }
 

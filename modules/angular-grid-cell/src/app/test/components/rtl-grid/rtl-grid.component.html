@@ -5,7 +5,7 @@
     </th>
   </tr>
   <tr *ngFor="let car of cars">
-    <td *ngFor="let col of cols">
+    <td *ngFor="let col of cols" [width]="col.width">
       <tld-cell #cell [data]="car" [column]="col"></tld-cell>
     </td>
   </tr>
