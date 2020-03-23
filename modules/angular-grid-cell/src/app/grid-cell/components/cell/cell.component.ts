@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 
 import { Column } from '../../models/classes/column';
 import { Element } from '../../models/classes/element';
@@ -8,6 +8,9 @@ import { IconElement } from '../elements/icon-element/classes/icon-element';
 import { ImageElement } from '../elements/image-element/classes/image-element';
 import { TextElement } from '../elements/text-element/classes/text-element';
 import { HtmlElement } from '../elements/html-element/classes/html-element';
+import { IGridCellConfig } from '../../config/i-grid-cell-config';
+import { ColumnAlign } from '../../models/enums/column-align.enum';
+import { GRID_CELL_CONFIG } from '../../config/grid-cell-config-token';
 
 @Component({
   selector: 'tld-cell',
@@ -17,10 +20,11 @@ import { HtmlElement } from '../elements/html-element/classes/html-element';
 export class CellComponent implements OnInit {
   rowDataArray: any[] = null;
   cellElements: Element[];
+  align: ColumnAlign;
   @Input() column: Column;
   @Input() data: any;
 
-  constructor() { }
+  constructor(@Inject(GRID_CELL_CONFIG) private gridCellConfig: IGridCellConfig) { }
 
   ngOnInit() {
     this.cellElements = [];
@@ -61,6 +65,15 @@ export class CellComponent implements OnInit {
     // If our data field is an array use it, and if it isn't use the data object as an array with one element in it
     if (this.data[this.column.field as string] instanceof Array) {
       this.rowDataArray = this.data[this.column.field as string];
+    }
+    this.initAlign();
+  }
+
+  private initAlign() {
+    if (this.column.align) {
+      this.align = this.column.align;
+    } else if (this.gridCellConfig.rtl) {
+      this.align = ColumnAlign.right;
     }
   }
 
