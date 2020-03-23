@@ -1,0 +1,12 @@
+<table border="1">
+  <tr>
+    <th *ngFor="let col of cols">
+      {{col.header}}
+    </th>
+  </tr>
+  <tr *ngFor="let car of cars">
+    <td *ngFor="let col of cols">
+      <tld-cell #cell [data]="car" [column]="col"></tld-cell>
+    </td>
+  </tr>
+</table>
