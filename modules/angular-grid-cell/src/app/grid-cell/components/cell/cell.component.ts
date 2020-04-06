@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { Column } from '../../models/classes/column';
 import { Element } from '../../models/classes/element';
@@ -8,9 +8,8 @@ import { IconElement } from '../elements/icon-element/classes/icon-element';
 import { ImageElement } from '../elements/image-element/classes/image-element';
 import { TextElement } from '../elements/text-element/classes/text-element';
 import { HtmlElement } from '../elements/html-element/classes/html-element';
-import { IGridCellConfig } from '../../config/i-grid-cell-config';
 import { ColumnAlign } from '../../models/enums/column-align.enum';
-import { GRID_CELL_CONFIG } from '../../config/grid-cell-config-token';
+import { GridCellConfigProvider } from '../../config/grid-cell-config-provider';
 
 @Component({
   selector: 'tld-cell',
@@ -24,7 +23,7 @@ export class CellComponent implements OnInit {
   @Input() column: Column;
   @Input() data: any;
 
-  constructor(@Inject(GRID_CELL_CONFIG) private gridCellConfig: IGridCellConfig) { }
+  constructor(private configProvider: GridCellConfigProvider) { }
 
   ngOnInit() {
     this.cellElements = [];
@@ -72,7 +71,7 @@ export class CellComponent implements OnInit {
   private initAlign() {
     if (this.column.align) {
       this.align = this.column.align;
-    } else if (this.gridCellConfig.rtl) {
+    } else if (this.configProvider.config.rtl) {
       this.align = ColumnAlign.right;
     }
   }

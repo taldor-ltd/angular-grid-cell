@@ -1,11 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { Column } from 'src/app/grid-cell/models/classes/column';
 import { TextElement } from 'src/app/grid-cell/components/elements/text-element/classes/text-element';
+import { GridCellConfigProvider } from 'src/app/grid-cell/config/grid-cell-config-provider';
 
 @Component({
   selector: 'tld-rtl-grid',
   templateUrl: './rtl-grid.component.html',
-  styleUrls: ['./rtl-grid.component.css']
+  styleUrls: ['./rtl-grid.component.css'],
+  providers: [
+    {
+      provide: GridCellConfigProvider,
+      useValue: {
+        config: {
+          rtl: true
+        }
+      }
+    }
+  ]
 })
 export class RtlGridComponent implements OnInit {
   cars: any[];
