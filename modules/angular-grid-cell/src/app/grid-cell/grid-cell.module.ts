@@ -12,9 +12,8 @@ import { DateTimeElementComponent } from './components/elements/date-time-elemen
 import { HtmlElementComponent } from './components/elements/html-element/html-element.component';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 import { SafeStylePipe } from './pipes/safe-style.pipe';
-import { GridCellConfigProvider } from './config/grid-cell-config-provider';
-import { DefaultConfig } from './config/default-config';
-import { Config } from './config/config';
+import { DefaultGridCellConfig } from './config/default-config';
+import { GridCellConfig } from './config/grid-cell-config';
 
 @NgModule({
   imports: [
@@ -38,24 +37,22 @@ import { Config } from './config/config';
   ],
   providers: [
     {
-      provide: GridCellConfigProvider,
-      useClass: DefaultConfig
+      provide: GridCellConfig,
+      useClass: DefaultGridCellConfig
     }
   ]
 })
 export class GridCellModule {
-  static forRoot(config?: Config): ModuleWithProviders {
+  static forRoot(config?: GridCellConfig): ModuleWithProviders {
     return {
       ngModule: GridCellModule,
       providers: [
         config ? {
-          provide: GridCellConfigProvider,
-          useValue: {
-            config: config
-          }
+          provide: GridCellConfig,
+          useValue: config
         } : {
-          provide: GridCellConfigProvider,
-          useClass: DefaultConfig
+          provide: GridCellConfig,
+          useClass: DefaultGridCellConfig
         }
       ]
     };

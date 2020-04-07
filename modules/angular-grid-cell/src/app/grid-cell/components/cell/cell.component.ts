@@ -9,7 +9,7 @@ import { ImageElement } from '../elements/image-element/classes/image-element';
 import { TextElement } from '../elements/text-element/classes/text-element';
 import { HtmlElement } from '../elements/html-element/classes/html-element';
 import { ColumnAlign } from '../../models/enums/column-align.enum';
-import { GridCellConfigProvider } from '../../config/grid-cell-config-provider';
+import { GridCellConfig } from '../../config/grid-cell-config';
 
 @Component({
   selector: 'tld-cell',
@@ -23,7 +23,7 @@ export class CellComponent implements OnInit {
   @Input() column: Column;
   @Input() data: any;
 
-  constructor(private configProvider: GridCellConfigProvider) { }
+  constructor(private config: GridCellConfig) { }
 
   ngOnInit() {
     this.cellElements = [];
@@ -71,7 +71,7 @@ export class CellComponent implements OnInit {
   private initAlign() {
     if (this.column.align) {
       this.align = this.column.align;
-    } else if (this.configProvider.config.rtl) {
+    } else if (this.config.rtl) {
       this.align = ColumnAlign.right;
     }
   }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Column } from 'src/app/grid-cell/models/classes/column';
 import { TextElement } from 'src/app/grid-cell/components/elements/text-element/classes/text-element';
-import { GridCellConfigProvider } from 'src/app/grid-cell/config/grid-cell-config-provider';
+import { GridCellConfig } from 'src/app/grid-cell/config/grid-cell-config';
 
 @Component({
   selector: 'tld-rtl-grid',
@@ -9,11 +9,9 @@ import { GridCellConfigProvider } from 'src/app/grid-cell/config/grid-cell-confi
   styleUrls: ['./rtl-grid.component.css'],
   providers: [
     {
-      provide: GridCellConfigProvider,
+      provide: GridCellConfig,
       useValue: {
-        config: {
-          rtl: true
-        }
+        rtl: true
       }
     }
   ]
