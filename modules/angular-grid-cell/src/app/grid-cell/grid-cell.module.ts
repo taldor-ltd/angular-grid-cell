@@ -23,8 +23,8 @@ import { SafeStylePipe } from './pipes/safe-style.pipe';
   declarations: [
     CellComponent,
     CellFunctionPipe,
-    SafeHtmlPipe,
-    SafeStylePipe,
+    // SafeHtmlPipe,
+    // SafeStylePipe,
     GroupByPipe,
     TextElementComponent,
     ButtonElementComponent,
