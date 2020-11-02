@@ -9,6 +9,7 @@ import { SimpleGridTestComponent } from './components/simple-grid-test/simple-gr
 import { GridCellModule } from '../grid-cell/grid-cell.module';
 import { ArrayDataTypeTestComponent } from './components/array-data-type-test/array-data-type-test.component';
 import { TestMeComponent } from './components/test-me/test-me.component';
+import { RtlGridComponent } from './components/rtl-grid/rtl-grid.component';
 
 @NgModule({
   imports: [
@@ -17,9 +18,12 @@ import { TestMeComponent } from './components/test-me/test-me.component';
     BrowserModule,
     BrowserAnimationsModule,
     TestRoutingModule,
-    GridCellModule
+    GridCellModule.forRoot({
+      rtl: false
+    })
   ],
   declarations: [
+    RtlGridComponent,
     SimpleGridTestComponent,
     ArrayDataTypeTestComponent,
     TestMeComponent
