@@ -1,6 +1,6 @@
 {
   "name": "@taldor-ltd/angular-grid-cell",
-  "version": "2.4.0",
+  "version": "2.4.6",
   "description": "Taldor - angular grid cell component",
   "main": "./bundles/angular-grid-cell.umd.js",
   "module": "./fesm5/angular-grid-cell.js",
@@ -24,8 +24,8 @@
   },
   "private": false,
   "peerDependencies": {
-    "@angular/core": ">=4.0.0",
     "@angular/common": ">=4.0.0",
+    "@angular/core": ">=4.0.0",
     "moment": ">=2.20.1"
   },
   "devDependencies": {
@@ -77,5 +77,6 @@
     "url": "https://github.com/taldor-ltd/angular-grid-cell/issues"
   },
   "homepage": "https://github.com/taldor-ltd/angular-grid-cell#readme",
-  "dependencies": {}
+  "dependencies": {},
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" }
 }
