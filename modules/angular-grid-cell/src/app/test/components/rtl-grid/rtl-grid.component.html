@@ -1,5 +1,3 @@
-<h1>Image Element</h1>
-
 <table border="1">
   <tr>
     <th *ngFor="let col of cols">
@@ -7,8 +5,8 @@
     </th>
   </tr>
   <tr *ngFor="let car of cars">
-    <td *ngFor="let col of cols">
-      <tld-cell [data]="car" [column]="col"></tld-cell>
+    <td *ngFor="let col of cols" [width]="col.width">
+      <tld-cell #cell [data]="car" [column]="col"></tld-cell>
     </td>
   </tr>
 </table>

@@ -11,7 +11,6 @@ import { ButtonElement } from 'src/app/grid-cell/components/elements/button-elem
 import { CellComponent } from 'src/app/grid-cell/components/cell/cell.component';
 import { HtmlElement } from 'src/app/grid-cell/components/elements/html-element/classes/html-element';
 import { TestModule } from '../../test.module';
-import { AutoCompleteModule } from 'primeng/autocomplete';
 
 @Component({
   selector: 'tld-simple-grid-test',
@@ -108,9 +107,9 @@ export class SimpleGridTestComponent implements OnInit {
       new Column(new HtmlElement(this.buildHtml.bind(this), this, TestModule), { header: 'my input field' }),
       new Column(
         new HtmlElement(
-          `<p-autoComplete [(ngModel)]="data.year" [suggestions]="filterYears" (completeMethod)="search($event)"></p-autoComplete>`,
+          `<input [(ngModel)]="data.year">`,
           this,
-          [ FormsModule, AutoCompleteModule ]
+          [ FormsModule ]
         ),
         { header: 'my input field' }
       )

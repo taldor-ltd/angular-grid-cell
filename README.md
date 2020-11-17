@@ -15,6 +15,7 @@ https://taldor-ltd.github.io/angular-grid-cell/
 
 * [Install](README.md#install)
 * [Usage](README.md#usage)
+* [Configuration](README.md#configuration)
 * [Options](README.md#options)
 
 ## Install
@@ -22,7 +23,7 @@ https://taldor-ltd.github.io/angular-grid-cell/
 ```
 npm i @taldor-ltd/angular-grid-cell moment
 ```
->Note: moment, primeicons and primeng are dependencies we're using internally in this repository.
+>Note: moment is a dependency we're using internally in this repository.
 
 ## Usage
 
@@ -32,50 +33,35 @@ npm i @taldor-ltd/angular-grid-cell moment
 ### 1. Add `GridCellModule` to your module's `imports`
 
 ```typescript
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
+...
 import { GridCellModule } from '@taldor-ltd/angular-grid-cell';
-
-import { AppComponent } from './app/app.component';
-
+...
 @NgModule({
   imports: [BrowserModule, GridCellModule],
   declarations: [AppComponent],
   bootstrap: [AppComponent]
 })
-
 class AppModule {}
-
-platformBrowserDynamic().bootstrapModule(AppModule);
 ```
 
 ### 2. Add `Columns[]` in your component's ts file
 
 ```typescript
-import { Component, OnInit } from '@angular/core';
-
+...
 import { Column, TextElement } from '@taldor-ltd/angular-grid-cell';
-
+...
 @Component({
   ...
 })
-export class MyComponent implements OnInit {
+export class MyComponent {
   cars = [
     { brand: 'SEAT', model: 'IBIZA' },
     { brand: 'SUBARU', model: 'IMPREZA' }
   ];
-  columns: Column[];
-
-  constructor() { }
-
-  ngOnInit() {
-    this.columns = [
-      new Column(new TextElement('brand'), { header: 'Car''s Brand' }),
-      new Column(new TextElement('model'), { header: 'Car''s Model' })
-    ];
-  }
-
+  columns = [
+    new Column(new TextElement('brand'), { header: 'Car''s Brand' }),
+    new Column(new TextElement('model'), { header: 'Car''s Model' })
+  ];
 }
 ```
 
@@ -95,6 +81,65 @@ export class MyComponent implements OnInit {
   </tr>
 </table>
 ````
+
+## Configuration
+
+### Global configuration
+
+A global configuration can be set to to change default behavior of this repo.
+
+Add `forRoot()` to your `GridCellModule` import passing it with the desired configuration
+
+```typescript
+...
+import { GridCellModule } from '@taldor-ltd/angular-grid-cell';
+...
+@NgModule({
+  imports: [
+    ...
+    GridCellModule.forRoot({
+      rtl: true
+    })
+    ...
+  ]
+})
+class AppModule {}
+```
+
+### Component configuration
+
+A configuration can be set to a specific component only. Doing so will overwrite the default behavior or the behavior configured globally. For instance, if you've globally set `rtl` mode to true, you can change a specific component's `rtl` mode to false.
+
+How?
+
+Add a new `provider` to your component's `providers` array in the decorator.
+
+* IMPORTANT - The provider's `provide` value <b>MUST</b> be `GridCellConfig`
+
+
+```typescript
+@Component({
+  ...
+  providers: [
+    {
+      provide: GridCellConfig,
+      useValue: {
+        rtl: true
+      }
+    }
+  ]
+})
+```
+
+### Configuration properties
+
+| Property | Type | Required | Default
+| --- | ---- | --- | --- |
+| [rtl](README.md#RTL-Mode) | *boolean* | Optional | `false`
+
+#### RTL Mode
+
+Setting to `true` will change the alignment of the cell's content to the right
 
 ## Options
 

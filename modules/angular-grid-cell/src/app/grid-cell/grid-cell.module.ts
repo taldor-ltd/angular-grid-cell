@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CellComponent } from './components/cell/cell.component';
@@ -12,6 +12,8 @@ import { DateTimeElementComponent } from './components/elements/date-time-elemen
 import { HtmlElementComponent } from './components/elements/html-element/html-element.component';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 import { SafeStylePipe } from './pipes/safe-style.pipe';
+import { DefaultGridCellConfig } from './config/default-config';
+import { GridCellConfig } from './config/grid-cell-config';
 
 @NgModule({
   imports: [
@@ -32,6 +34,27 @@ import { SafeStylePipe } from './pipes/safe-style.pipe';
     IconElementComponent,
     DateTimeElementComponent,
     HtmlElementComponent
+  ],
+  providers: [
+    {
+      provide: GridCellConfig,
+      useClass: DefaultGridCellConfig
+    }
   ]
 })
-export class GridCellModule { }
+export class GridCellModule {
+  static forRoot(config?: GridCellConfig): ModuleWithProviders {
+    return {
+      ngModule: GridCellModule,
+      providers: [
+        config ? {
+          provide: GridCellConfig,
+          useValue: config
+        } : {
+          provide: GridCellConfig,
+          useClass: DefaultGridCellConfig
+        }
+      ]
+    };
+  }
+}

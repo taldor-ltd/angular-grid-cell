@@ -8,6 +8,8 @@ import { IconElement } from '../elements/icon-element/classes/icon-element';
 import { ImageElement } from '../elements/image-element/classes/image-element';
 import { TextElement } from '../elements/text-element/classes/text-element';
 import { HtmlElement } from '../elements/html-element/classes/html-element';
+import { ColumnAlign } from '../../models/enums/column-align.enum';
+import { GridCellConfig } from '../../config/grid-cell-config';
 
 @Component({
   selector: 'tld-cell',
@@ -17,10 +19,11 @@ import { HtmlElement } from '../elements/html-element/classes/html-element';
 export class CellComponent implements OnInit {
   rowDataArray: any[] = null;
   cellElements: Element[];
+  align: ColumnAlign;
   @Input() column: Column;
   @Input() data: any;
 
-  constructor() { }
+  constructor(private config: GridCellConfig) { }
 
   ngOnInit() {
     this.cellElements = [];
@@ -61,6 +64,15 @@ export class CellComponent implements OnInit {
     // If our data field is an array use it, and if it isn't use the data object as an array with one element in it
     if (this.data[this.column.field as string] instanceof Array) {
       this.rowDataArray = this.data[this.column.field as string];
+    }
+    this.initAlign();
+  }
+
+  private initAlign() {
+    if (this.column.align) {
+      this.align = this.column.align;
+    } else if (this.config.rtl) {
+      this.align = ColumnAlign.right;
     }
   }
 

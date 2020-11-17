@@ -23,7 +23,7 @@ export class ImageElement extends ImageElementBase {
       if (!img.src.includes(this.errorImage)) {
         img.src = this.errorImage;
       } else {
-        img.src = 'assets/img/broken-img.png';
+        img.src = 'https://github.com/taldor-ltd/angular-grid-cell/raw/master/modules/angular-grid-cell/src/assets/img/broken-img.png';
       }
     }
   }
