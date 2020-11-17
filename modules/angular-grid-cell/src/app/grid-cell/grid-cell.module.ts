@@ -25,8 +25,8 @@ import { GridCellConfig } from './config/grid-cell-config';
   declarations: [
     CellComponent,
     CellFunctionPipe,
-    SafeHtmlPipe,
-    SafeStylePipe,
+    // SafeHtmlPipe,
+    // SafeStylePipe,
     GroupByPipe,
     TextElementComponent,
     ButtonElementComponent,
