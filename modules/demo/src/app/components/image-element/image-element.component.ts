@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Column, ImageElement } from '@taldor-ltd/angular-grid-cell';
+import { Column, ImageElement } from '@taldor-ltd/angular-grid-cell/public_api';
 
 @Component({
   selector: 'app-image-element',
@@ -17,7 +17,7 @@ export class ImageElementComponent implements OnInit {
 
   ngOnInit() {
     this.cols = [
-      new Column(new ImageElement('pic'), { header: 'Pic' })
+      new Column(new ImageElement('pic', { tooltip: 'test tooltip', tooltipAsDataTitle: true }), { header: 'Pic' })
     ];
   }
 

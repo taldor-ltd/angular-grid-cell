@@ -18,9 +18,7 @@ import { RtlGridComponent } from './components/rtl-grid/rtl-grid.component';
     BrowserModule,
     BrowserAnimationsModule,
     TestRoutingModule,
-    GridCellModule.forRoot({
-      rtl: false
-    })
+    GridCellModule
   ],
   declarations: [
     RtlGridComponent,
