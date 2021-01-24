@@ -1,6 +1,6 @@
 {
   "name": "@taldor-ltd/angular-grid-cell",
-  "version": "2.4.6",
+  "version": "2.6.1",
   "description": "Taldor - angular grid cell component",
   "main": "./bundles/angular-grid-cell.umd.js",
   "module": "./fesm5/angular-grid-cell.js",
@@ -77,6 +77,5 @@
     "url": "https://github.com/taldor-ltd/angular-grid-cell/issues"
   },
   "homepage": "https://github.com/taldor-ltd/angular-grid-cell#readme",
-  "dependencies": {},
-  "publishConfig": { "registry": "https://npm.pkg.github.com/" }
+  "dependencies": {}
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Column, TextElement } from '@taldor-ltd/angular-grid-cell';
+import { Column, TextElement } from '@taldor-ltd/angular-grid-cell/public_api';
 
 @Component({
   selector: 'app-text-element-column',

@@ -4,6 +4,7 @@ import { Element } from './element';
 export abstract class BaseElementComponent {
   span: ElementRef;
   tooltip: string;
+  dataTitleTooltip: string;
 
   @Input() element: Element;
   @Input() data: any;
@@ -14,12 +15,28 @@ export abstract class BaseElementComponent {
         if (!!this.element && !!this.element.tooltip) {
           if (typeof this.element.tooltip === 'function') {
             if (!!this.data) {
-              (<HTMLElement>this.span.nativeElement).addEventListener('mouseenter', () => this.tooltip = (<Function>this.element.tooltip)(this.data));
+              (<HTMLElement>this.span.nativeElement).addEventListener('mouseenter', () => {
+                if (this.element.tooltipAsDataTitle) {
+                  this.dataTitleTooltip = (<Function>this.element.tooltip)(this.data);
+                } else {
+                  this.tooltip = (<Function>this.element.tooltip)(this.data);
+                }
+              });
             } else {
-              (<HTMLElement>this.span.nativeElement).addEventListener('mouseenter', () => this.tooltip = (<Function>this.element.tooltip)());
+              (<HTMLElement>this.span.nativeElement).addEventListener('mouseenter', () => {
+                if (this.element.tooltipAsDataTitle) {
+                  this.dataTitleTooltip = (<Function>this.element.tooltip)();
+                } else {
+                  this.tooltip = (<Function>this.element.tooltip)();
+                }
+              });
             }
           } else if (typeof this.element.tooltip === 'string') {
-            this.tooltip = this.element.tooltip;
+            if (this.element.tooltipAsDataTitle) {
+              this.dataTitleTooltip = this.element.tooltip;
+            } else {
+              this.tooltip = this.element.tooltip;
+            }
           }
         }
       }, 0);

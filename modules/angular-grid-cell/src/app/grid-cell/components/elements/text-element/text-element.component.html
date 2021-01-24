@@ -1,5 +1,6 @@
 <span #span [class]="element.class" [ngClass]="element.getNgClass ? (element.getNgClass | cellFunction: data) : {}"
-  [attr.title]='this.tooltip' tooltipPosition="left" [attr.id]="element.elementId | cellFunction: data">
+  [attr.title]='this.tooltip' [attr.data-title]='this.dataTitleTooltip' tooltipPosition="left"
+  [attr.id]="element.elementId | cellFunction: data">
   <span [ngSwitch]="fieldType">
     <span *ngSwitchCase="FieldType.text">
       {{data[element.elementField.toString()]}}

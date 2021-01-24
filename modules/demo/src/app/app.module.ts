@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { GridCellModule } from '@taldor-ltd/angular-grid-cell';
+import { GridCellModule } from '@taldor-ltd/angular-grid-cell/public_api';
 
 import { AppComponent } from './app.component';
 import { TextElementColumnComponent } from './components/text-element-column/text-element-column.component';
